@@ -1,0 +1,94 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chat-with-docs-backend"
+version = "0.1.0"
+description = "Backend của ứng dụng Chat với tài liệu (MVP)"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    "pydantic>=2.6",
+    "pydantic-settings>=2.2",
+    "python-multipart>=0.0.9",
+    "sqlalchemy>=2.0",
+    "alembic>=1.13",
+    "psycopg[binary]>=3.1",
+    "pgvector>=0.3",
+    "structlog>=24.1",
+    "prometheus-client>=0.20",
+    "opentelemetry-api>=1.24",
+    "opentelemetry-sdk>=1.24",
+    "argon2-cffi>=23.1",
+    "boto3>=1.34",
+    "pypdf>=4.2",
+    # pypdf cần cryptography để mở PDF mã hóa AES (phân biệt "mã hóa" với "hỏng")
+    "cryptography>=42",
+    "anthropic>=0.40",
+    "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+# Mô hình embedding chạy nội bộ (EMBEDDING_PROVIDER=local). torch bản CPU cài riêng, xem Dockerfile.
+embedding = [
+    "sentence-transformers>=3.0",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-timeout>=2.3",
+    "pytest-cov>=5.0",
+    "ruff>=0.5",
+    "mypy>=1.10",
+    "import-linter>=2.0",
+    "testcontainers>=4.7",
+    # Sinh bộ PDF tổng hợp cho kiểm thử (tests/fixtures/make_fixtures.py)
+    "reportlab>=4.2",
+    "pdfplumber>=0.11",
+    "boto3-stubs[s3]>=1.34",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.setuptools.package-data]
+"app" = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+pythonpath = ["."]
+timeout = 300
+markers = [
+    "integration: cần PostgreSQL (pgvector) và kho S3 thật (testcontainers hoặc TEST_DATABASE_URL)",
+    "needs_api_key: gọi dịch vụ AI thật, chỉ chạy khi có ANTHROPIC_API_KEY",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["app", "tests"]
+extend-exclude = ["alembic/versions"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+# Độ dài dòng mã do `ruff format` kiểm soát; chú thích tiếng Việt được phép dài hơn một chút
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app", "tests"]
+
+[tool.ruff.lint.per-file-ignores]
+# FastAPI dùng Depends()/File() làm giá trị mặc định của tham số
+"app/api/*.py" = ["B008"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+packages = ["app"]
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = ["pgvector.*", "sentence_transformers.*", "huggingface_hub.*", "pypdf.*", "testcontainers.*", "reportlab.*"]
+ignore_missing_imports = true

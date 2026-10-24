@@ -1,0 +1,19 @@
+/* Token giao diện lấy nguyên từ docs/design/html_design/styles.css (T0-05).
+   Màu đã chọn để đạt tương phản WCAG 2.1 AA (đề xuất, chờ DQ-004). Đổi màu ở đây, không viết cứng ở thành phần. */
+:root {
+  --bg: #f4f6fa;
+  --surface: #ffffff;
+  --text: #111827;
+  --muted: #4b5563;
+  --border: #d1d5db;
+  --primary: #1d4ed8;
+  --primary-hover: #1e40af;
+  --primary-soft: #e8eefc;
+  --ok-fg: #166534; --ok-bg: #dcfce7;
+  --warn-fg: #92400e; --warn-bg: #fef3c7;
+  --err-fg: #991b1b; --err-bg: #fee2e2;
+  --info-fg: #1e3a8a; --info-bg: #dbeafe;
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(17, 24, 39, .12);
+  --font: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+}

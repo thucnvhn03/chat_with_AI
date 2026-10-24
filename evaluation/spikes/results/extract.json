@@ -1,0 +1,30 @@
+{
+  "pypdf": {
+    "files": 22,
+    "files_failed": {
+      "BienBan_MaHoa.pdf": "PermissionError"
+    },
+    "pages": 53,
+    "pages_with_text_ratio": 0.9245,
+    "text_similarity_mean": 0.9335,
+    "text_similarity_min": 0.4502,
+    "diacritic_recall_mean": 1.0,
+    "table_rows_intact": "0/18",
+    "two_column_sentences_intact": "8/8",
+    "ms_per_page_median": 31.6
+  },
+  "pdfplumber": {
+    "files": 22,
+    "files_failed": {
+      "BienBan_MaHoa.pdf": "PdfminerException"
+    },
+    "pages": 53,
+    "pages_with_text_ratio": 0.9245,
+    "text_similarity_mean": 0.8889,
+    "text_similarity_min": 0.3512,
+    "diacritic_recall_mean": 1.0,
+    "table_rows_intact": "18/18",
+    "two_column_sentences_intact": "3/8",
+    "ms_per_page_median": 269.0
+  }
+}

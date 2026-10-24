@@ -1,0 +1,60 @@
+# Ghi đè cho kiểm thử đầu-cuối (Playwright): adapter AI giả lập trả citation định sẵn, embedding giả lập
+# tất định (không tải mô hình), tài khoản mẫu được tạo sẵn. KHÔNG dùng cho môi trường thật.
+#
+#   docker compose -f deploy/docker-compose.yml -f deploy/docker-compose.e2e.yml up -d --build --wait
+#   cd e2e && npm ci && npx playwright install chromium && npx playwright test
+x-e2e-env: &e2e-env
+  ANSWER_PROVIDER: fake
+  EMBEDDING_PROVIDER: hash
+  MIN_RELEVANCE_SCORE: "0.2"
+  POLL_INTERVAL_S: "1"
+  MAX_DOCS_PER_USER: "1000"
+  COOKIE_SECURE: "false"
+  WORKER_POLL_INTERVAL_S: "0.5"
+  LOGIN_MAX_FAILURES: "50"
+
+services:
+  migrate:
+    environment: *e2e-env
+
+  model-download:
+    environment: *e2e-env
+
+  # Tạo tài khoản mẫu cho kịch bản E2E (mật khẩu chỉ dùng cho môi trường kiểm thử cục bộ/CI)
+  seed:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.backend
+      args:
+        INSTALL_EXTRAS: ${BACKEND_EXTRAS:-dev,embedding}
+    env_file:
+      - path: env.example
+        required: true
+    environment:
+      <<: *e2e-env
+      INITIAL_PASSWORD: e2e-mat-khau-123
+    command:
+      - sh
+      - -c
+      - >-
+        python -m app.cli create-user e2e.bd bd &&
+        python -m app.cli create-user e2e.bd2 bd &&
+        python -m app.cli create-user e2e.empty bd &&
+        python -m app.cli create-user e2e.admin security_admin &&
+        python -m app.cli create-user e2e.manager manager &&
+        python -m app.cli create-user e2e.revoke bd
+    volumes:
+      - ../backend:/app
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: "no"
+
+  backend:
+    environment: *e2e-env
+    depends_on:
+      seed:
+        condition: service_completed_successfully
+
+  worker:
+    environment: *e2e-env

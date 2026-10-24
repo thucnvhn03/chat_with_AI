@@ -1,0 +1,1184 @@
+{
+  "dataset": "v1.jsonl",
+  "asker": "api:http://backend:8000",
+  "generated_at": "2026-10-23T13:05:35+00:00",
+  "git_revision": null,
+  "config_note": "KIEM CHUNG LUONG: EMBEDDING_PROVIDER=hash, ANSWER_PROVIDER=fake - khong phai so lieu chat luong",
+  "cost_usd": null,
+  "metrics": {
+    "counts": {
+      "total": 59,
+      "in_scope": 24,
+      "out_of_scope": 12,
+      "multi_doc": 11,
+      "follow_up": 12,
+      "errors": 0
+    },
+    "correct_with_source": 0.7083,
+    "correct_only": 0.7917,
+    "hallucination_rate": 0.75,
+    "source_coverage": 0.0,
+    "follow_up_correct": 0.5833,
+    "correct_page": 1.0,
+    "citations_checked": 56,
+    "answers_with_content_having_source": 1.0,
+    "latency_ms": {
+      "p50": 196.74861700002566,
+      "p90": 318.86835319998005,
+      "p95": 356.0200412000256,
+      "max": 537.0482229999993
+    }
+  },
+  "by_language": {
+    "en": {
+      "counts": {
+        "total": 3,
+        "in_scope": 2,
+        "out_of_scope": 1,
+        "multi_doc": 0,
+        "follow_up": 0,
+        "errors": 0
+      },
+      "correct_with_source": 1.0,
+      "correct_only": 1.0,
+      "hallucination_rate": 1.0,
+      "source_coverage": null,
+      "follow_up_correct": null,
+      "correct_page": 1.0,
+      "citations_checked": 3,
+      "answers_with_content_having_source": 1.0,
+      "latency_ms": {
+        "p50": 245.30126199999813,
+        "p90": 384.79204519996983,
+        "p95": 402.2283930999663,
+        "max": 419.66474099996276
+      }
+    },
+    "vi": {
+      "counts": {
+        "total": 56,
+        "in_scope": 22,
+        "out_of_scope": 11,
+        "multi_doc": 11,
+        "follow_up": 12,
+        "errors": 0
+      },
+      "correct_with_source": 0.6818,
+      "correct_only": 0.7727,
+      "hallucination_rate": 0.7273,
+      "source_coverage": 0.0,
+      "follow_up_correct": 0.5833,
+      "correct_page": 1.0,
+      "citations_checked": 53,
+      "answers_with_content_having_source": 1.0,
+      "latency_ms": {
+        "p50": 196.64473750000866,
+        "p90": 304.89688699998396,
+        "p95": 354.2618942499729,
+        "max": 537.0482229999993
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "v1-in_scope-00",
+      "type": "in_scope",
+      "lang": "en",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 419.7,
+      "citations": [
+        {
+          "document": "Partner_Profile_EN.pdf",
+          "page": 1,
+          "cited_text": "Partner profile: Lotus Freight International\nLotus Freight International operates 14 bonded warehouses across Southeast Asia.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-01",
+      "type": "in_scope",
+      "lang": "en",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 182.4,
+      "citations": [
+        {
+          "document": "Partner_Profile_EN.pdf",
+          "page": 1,
+          "cited_text": "The standard customs clearance time offered to partners is 48 hours.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-02",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 245.3,
+      "citations": [
+        {
+          "document": "BaoGia_Luukho.pdf",
+          "page": 1,
+          "cited_text": "Gói dịch vụ\nGiá mỗi tháng (triệu đồng)\nCam kết tối thiểu\nGói Cơ bản\n12\n6 tháng\nGói Tiêu chuẩn\n52\n12 tháng\nGói Nâng cao\n5\n3 tháng\nTrong quá trình thực hiện, nếu phát sinh vướng mắc, các bên chủ động thông báo\ncho nhau để cùng giải quyết.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-03",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": false,
+      "reason": "sai nội dung",
+      "correct": false,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 264.7,
+      "citations": [
+        {
+          "document": "BaoGia_Daotaonhansu.pdf",
+          "page": 1,
+          "cited_text": "Bảng báo giá dịch vụ Đào tạo nhân sự năm 2026 của Công ty Dịch\nvụ Hoàng Hà gửi Việt Tín.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-04",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": false,
+      "reason": "không có nguồn khớp tài liệu/trang mong đợi",
+      "correct": true,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 224.4,
+      "citations": [
+        {
+          "document": "HopDong_PhuGia.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty Phú Gia thanh toán chậm, mức phạt là\n0,03% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-05",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": false,
+      "reason": "không có nguồn khớp tài liệu/trang mong đợi",
+      "correct": true,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 179.0,
+      "citations": [
+        {
+          "document": "BaoGia_Phanmemketoan.pdf",
+          "page": 2,
+          "cited_text": "Điều kiện áp dụng báo giá Phần mềm kế toán\nĐiều kiện thanh toán dịch vụ Phần mềm kế toán: khách hàng thanh toán trước 30%\ngiá trị hợp đồng.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-06",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 196.5,
+      "citations": [
+        {
+          "document": "HopDong_KimNgan.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty Kim Ngân thanh toán chậm, mức phạt\nlà 0,05% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-07",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 537.0,
+      "citations": [
+        {
+          "document": "BaoGia_Vanchuyenlanh.pdf",
+          "page": 2,
+          "cited_text": "Báo giá dịch vụ Vận chuyển lạnh có hiệu lực trong 60 ngày kể từ ngày phát hành.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-08",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 356.0,
+      "citations": [
+        {
+          "document": "BaoGia_Daotaonhansu.pdf",
+          "page": 2,
+          "cited_text": "Báo giá dịch vụ Đào tạo nhân sự có hiệu lực trong 15 ngày kể từ ngày phát hành.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-09",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 211.3,
+      "citations": [
+        {
+          "document": "HopDong_HungThinh.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty Hưng Thịnh thanh toán chậm, mức\nphạt là 0,03% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-10",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 271.8,
+      "citations": [
+        {
+          "document": "HopDong_HungThinh.pdf",
+          "page": 2,
+          "cited_text": "Công ty Hưng Thịnh đặt cọc 10% giá trị mỗi đơn hàng trước khi giao hàng.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-11",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 284.4,
+      "citations": [
+        {
+          "document": "HopDong_DaiDuongXanh.pdf",
+          "page": 2,
+          "cited_text": "Thời hạn thanh toán là 20 ngày kể từ ngày Công ty Đại Dương\nXanh nhận hóa đơn hợp lệ.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-12",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 252.9,
+      "citations": [
+        {
+          "document": "BaoGia_Luukho.pdf",
+          "page": 2,
+          "cited_text": "Báo giá dịch vụ Lưu kho có hiệu lực trong 30 ngày kể từ ngày phát hành.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-13",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 155.8,
+      "citations": [
+        {
+          "document": "BaoGia_Phanmemketoan.pdf",
+          "page": 2,
+          "cited_text": "Báo giá dịch vụ Phần mềm kế toán có hiệu lực trong 15 ngày kể từ ngày phát hành.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-14",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": false,
+      "reason": "sai nội dung",
+      "correct": false,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 179.5,
+      "citations": [
+        {
+          "document": "BaoGia_Phanmemketoan.pdf",
+          "page": 1,
+          "cited_text": "Bảng báo giá dịch vụ Phần mềm kế toán năm 2026 của Công ty\nDịch vụ Hoàng Hà gửi Việt Tín.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-15",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 182.2,
+      "citations": [
+        {
+          "document": "HopDong_HungThinh.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty Hưng Thịnh thanh toán chậm, mức\nphạt là 0,03% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-16",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 199.3,
+      "citations": [
+        {
+          "document": "HopDong_MinhLong.pdf",
+          "page": 4,
+          "cited_text": "Hợp đồng với Công ty Minh Long có hiệu lực 18 tháng kể từ ngày\nký.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-17",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 236.4,
+      "citations": [
+        {
+          "document": "HopDong_DaiDuongXanh.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty Đại Dương Xanh thanh toán chậm, mức\nphạt là 0,03% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-18",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 175.2,
+      "citations": [
+        {
+          "document": "HopDong_DaiDuongXanh.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty Đại Dương Xanh thanh toán chậm, mức\nphạt là 0,03% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-19",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": false,
+      "reason": "sai nội dung",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 163.7,
+      "citations": [
+        {
+          "document": "HopDong_PhuGia.pdf",
+          "page": 3,
+          "cited_text": "Việt Tín giao hàng trễ hạn chịu phạt 3% giá trị lô hàng\ngiao trễ.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-20",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": false,
+      "reason": "sai nội dung",
+      "correct": false,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 165.9,
+      "citations": [
+        {
+          "document": "HopDong_MinhLong.pdf",
+          "page": 3,
+          "cited_text": "Hợp đồng phân phối giữa Công ty Cổ phần Thương mại Việt Tín và\nCông ty Minh Long — Phạt vi phạm\nĐiều 7.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-21",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 186.0,
+      "citations": [
+        {
+          "document": "BaoGia_Baotrithietbi.pdf",
+          "page": 1,
+          "cited_text": "Gói dịch vụ\nGiá mỗi tháng (triệu đồng)\nCam kết tối thiểu\nGói Cơ bản\n15\n3 tháng\nGói Tiêu chuẩn\n9\n3 tháng\nGói Nâng cao\n51\n3 tháng\nMọi sửa đổi, bổ sung phải được lập thành văn bản và có chữ ký của đại diện hợp\npháp hai bên.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-22",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 164.3,
+      "citations": [
+        {
+          "document": "DeXuat_Kenhbanletructuyen.pdf",
+          "page": 1,
+          "cited_text": "Đề xuất dự án Kênh bán lẻ trực\ntuyến\nNgân sách đề xuất cho dự án Kênh bán lẻ\ntrực tuyến là 1,4 tỷ đồng trong năm đầu.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-in_scope-23",
+      "type": "in_scope",
+      "lang": "vi",
+      "passed": false,
+      "reason": "sai nội dung",
+      "correct": false,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 217.2,
+      "citations": [
+        {
+          "document": "BaoGia_Inanbaobi.pdf",
+          "page": 1,
+          "cited_text": "Bảng báo giá dịch vụ In ấn bao bì năm 2026 của Công ty Dịch vụ\nHoàng Hà gửi Việt Tín.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-out_of_scope-00",
+      "type": "out_of_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": false,
+      "source_ok": false,
+      "not_found": true,
+      "latency_ms": 295.5,
+      "citations": []
+    },
+    {
+      "id": "v1-out_of_scope-01",
+      "type": "out_of_scope",
+      "lang": "vi",
+      "passed": false,
+      "reason": "trả lời có nội dung cho câu ngoài phạm vi (bịa)",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 171.2,
+      "citations": [
+        {
+          "document": "HopDong_SaoViet.pdf",
+          "page": 2,
+          "cited_text": "Thời hạn thanh toán là 15 ngày kể từ ngày Công ty Sao Việt\nnhận hóa đơn hợp lệ.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-out_of_scope-02",
+      "type": "out_of_scope",
+      "lang": "vi",
+      "passed": false,
+      "reason": "trả lời có nội dung cho câu ngoài phạm vi (bịa)",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 255.4,
+      "citations": [
+        {
+          "document": "BaoGia_Inanbaobi.pdf",
+          "page": 2,
+          "cited_text": "Điều kiện áp dụng báo giá In ấn bao bì\nĐiều kiện thanh toán dịch vụ In ấn bao bì: khách hàng thanh toán trước 50% giá trị\nhợp đồng.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-out_of_scope-03",
+      "type": "out_of_scope",
+      "lang": "vi",
+      "passed": false,
+      "reason": "trả lời có nội dung cho câu ngoài phạm vi (bịa)",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 314.3,
+      "citations": [
+        {
+          "document": "HopDong_SaoViet.pdf",
+          "page": 1,
+          "cited_text": "Công ty Sao Việt là nhà phân phối độc quyền sản phẩm đồ gia\ndụng của Việt Tín tại khu vực được giao.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-out_of_scope-04",
+      "type": "out_of_scope",
+      "lang": "vi",
+      "passed": false,
+      "reason": "trả lời có nội dung cho câu ngoài phạm vi (bịa)",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 169.4,
+      "citations": [
+        {
+          "document": "DeXuat_MorongmienTrung.pdf",
+          "page": 1,
+          "cited_text": "Đề xuất dự án Mở rộng miền Trung\nNgân sách đề xuất cho dự án Mở rộng miền\nTrung là 850 triệu đồng trong năm đầu.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-out_of_scope-05",
+      "type": "out_of_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": false,
+      "source_ok": false,
+      "not_found": true,
+      "latency_ms": 154.2,
+      "citations": []
+    },
+    {
+      "id": "v1-out_of_scope-06",
+      "type": "out_of_scope",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": false,
+      "source_ok": false,
+      "not_found": true,
+      "latency_ms": 196.7,
+      "citations": []
+    },
+    {
+      "id": "v1-out_of_scope-07",
+      "type": "out_of_scope",
+      "lang": "vi",
+      "passed": false,
+      "reason": "trả lời có nội dung cho câu ngoài phạm vi (bịa)",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 187.8,
+      "citations": [
+        {
+          "document": "BaoGia_Inanbaobi.pdf",
+          "page": 1,
+          "cited_text": "Bảng báo giá dịch vụ In ấn bao bì năm 2026 của Công ty Dịch vụ\nHoàng Hà gửi Việt Tín.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-out_of_scope-08",
+      "type": "out_of_scope",
+      "lang": "vi",
+      "passed": false,
+      "reason": "trả lời có nội dung cho câu ngoài phạm vi (bịa)",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 161.5,
+      "citations": [
+        {
+          "document": "BaoGia_Inanbaobi.pdf",
+          "page": 2,
+          "cited_text": "Báo giá dịch vụ In ấn bao bì có hiệu lực trong 60 ngày kể từ ngày phát hành.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-out_of_scope-09",
+      "type": "out_of_scope",
+      "lang": "vi",
+      "passed": false,
+      "reason": "trả lời có nội dung cho câu ngoài phạm vi (bịa)",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 129.6,
+      "citations": [
+        {
+          "document": "HopDong_MinhLong.pdf",
+          "page": 1,
+          "cited_text": "Hợp đồng phân phối giữa Công ty Cổ phần Thương mại Việt Tín và\nCông ty Minh Long\nĐiều 1.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-out_of_scope-10",
+      "type": "out_of_scope",
+      "lang": "en",
+      "passed": false,
+      "reason": "trả lời có nội dung cho câu ngoài phạm vi (bịa)",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 245.3,
+      "citations": [
+        {
+          "document": "Partner_Profile_EN.pdf",
+          "page": 1,
+          "cited_text": "Partner profile: Lotus Freight International\nLotus Freight International operates 14 bonded warehouses across Southeast Asia.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-out_of_scope-11",
+      "type": "out_of_scope",
+      "lang": "vi",
+      "passed": false,
+      "reason": "trả lời có nội dung cho câu ngoài phạm vi (bịa)",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 158.4,
+      "citations": [
+        {
+          "document": "HopDong_PhuGia.pdf",
+          "page": 4,
+          "cited_text": "Mỗi bên chỉ định một đầu mối liên hệ để phối hợp công việc hằng ngày.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-multi_doc-00",
+      "type": "multi_doc",
+      "lang": "vi",
+      "passed": false,
+      "reason": "thiếu nguồn từ một số tài liệu mong đợi",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 187.0,
+      "citations": [
+        {
+          "document": "HopDong_MinhLong.pdf",
+          "page": 4,
+          "cited_text": "Hợp đồng phân phối giữa Công ty Cổ phần Thương mại Việt Tín và\nCông ty Minh Long — Thời hạn và chấm dứt\nĐiều 11.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-multi_doc-01",
+      "type": "multi_doc",
+      "lang": "vi",
+      "passed": false,
+      "reason": "thiếu nguồn từ một số tài liệu mong đợi",
+      "correct": false,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 149.7,
+      "citations": [
+        {
+          "document": "HopDong_HungThinh.pdf",
+          "page": 2,
+          "cited_text": "Hợp đồng phân phối giữa Công ty Cổ phần Thương mại Việt Tín và\nCông ty Hưng Thịnh — Điều khoản thanh toán\nĐiều 3.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-multi_doc-02",
+      "type": "multi_doc",
+      "lang": "vi",
+      "passed": false,
+      "reason": "thiếu nguồn từ một số tài liệu mong đợi",
+      "correct": false,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 168.8,
+      "citations": [
+        {
+          "document": "HopDong_DaiDuongXanh.pdf",
+          "page": 2,
+          "cited_text": "Hợp đồng phân phối giữa Công ty Cổ phần Thương mại Việt Tín và\nCông ty Đại Dương Xanh — Điều khoản thanh toán\nĐiều 3.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-multi_doc-03",
+      "type": "multi_doc",
+      "lang": "vi",
+      "passed": false,
+      "reason": "thiếu nguồn từ một số tài liệu mong đợi",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 211.0,
+      "citations": [
+        {
+          "document": "HopDong_KimNgan.pdf",
+          "page": 4,
+          "cited_text": "Hợp đồng phân phối giữa Công ty Cổ phần Thương mại Việt Tín và\nCông ty Kim Ngân — Thời hạn và chấm dứt\nĐiều 11.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-multi_doc-04",
+      "type": "multi_doc",
+      "lang": "vi",
+      "passed": false,
+      "reason": "thiếu nguồn từ một số tài liệu mong đợi",
+      "correct": false,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 262.8,
+      "citations": [
+        {
+          "document": "HopDong_AnBinh.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty An Bình thanh toán chậm, mức phạt là\n0,05% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-multi_doc-05",
+      "type": "multi_doc",
+      "lang": "vi",
+      "passed": false,
+      "reason": "thiếu nguồn từ một số tài liệu mong đợi",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 207.8,
+      "citations": [
+        {
+          "document": "HopDong_HungThinh.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty Hưng Thịnh thanh toán chậm, mức\nphạt là 0,03% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-multi_doc-06",
+      "type": "multi_doc",
+      "lang": "vi",
+      "passed": false,
+      "reason": "thiếu nguồn từ một số tài liệu mong đợi",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 337.3,
+      "citations": [
+        {
+          "document": "HopDong_DaiDuongXanh.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty Đại Dương Xanh thanh toán chậm, mức\nphạt là 0,03% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-multi_doc-07",
+      "type": "multi_doc",
+      "lang": "vi",
+      "passed": false,
+      "reason": "thiếu nguồn từ một số tài liệu mong đợi",
+      "correct": false,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 251.9,
+      "citations": [
+        {
+          "document": "HopDong_KimNgan.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty Kim Ngân thanh toán chậm, mức phạt\nlà 0,05% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-multi_doc-08",
+      "type": "multi_doc",
+      "lang": "vi",
+      "passed": false,
+      "reason": "thiếu nguồn từ một số tài liệu mong đợi",
+      "correct": false,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 179.9,
+      "citations": [
+        {
+          "document": "BaoGia_Vanchuyenlanh.pdf",
+          "page": 2,
+          "cited_text": "Điều kiện áp dụng báo giá Vận chuyển lạnh\nĐiều kiện thanh toán dịch vụ Vận chuyển lạnh: khách hàng thanh toán trước 50%\ngiá trị hợp đồng.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-multi_doc-09",
+      "type": "multi_doc",
+      "lang": "vi",
+      "passed": false,
+      "reason": "thiếu nguồn từ một số tài liệu mong đợi",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 217.8,
+      "citations": [
+        {
+          "document": "BaoGia_Daotaonhansu.pdf",
+          "page": 2,
+          "cited_text": "Điều kiện áp dụng báo giá Đào tạo nhân sự\nĐiều kiện thanh toán dịch vụ Đào tạo nhân sự: khách hàng thanh toán trước 50%\ngiá trị hợp đồng.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-multi_doc-10",
+      "type": "multi_doc",
+      "lang": "vi",
+      "passed": false,
+      "reason": "thiếu nguồn từ một số tài liệu mong đợi",
+      "correct": false,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 206.6,
+      "citations": [
+        {
+          "document": "BaoGia_Inanbaobi.pdf",
+          "page": 2,
+          "cited_text": "Điều kiện áp dụng báo giá In ấn bao bì\nĐiều kiện thanh toán dịch vụ In ấn bao bì: khách hàng thanh toán trước 50% giá trị\nhợp đồng.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-follow_up-00",
+      "type": "follow_up",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 353.7,
+      "citations": [
+        {
+          "document": "HopDong_AnBinh.pdf",
+          "page": 4,
+          "cited_text": "Mỗi bên được đơn phương chấm dứt hợp đồng nếu báo trước 45\nngày bằng văn bản.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-follow_up-01",
+      "type": "follow_up",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 168.3,
+      "citations": [
+        {
+          "document": "HopDong_PhuGia.pdf",
+          "page": 4,
+          "cited_text": "Mỗi bên được đơn phương chấm dứt hợp đồng nếu báo trước 45\nngày bằng văn bản.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-follow_up-02",
+      "type": "follow_up",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 154.2,
+      "citations": [
+        {
+          "document": "HopDong_HungThinh.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty Hưng Thịnh thanh toán chậm, mức\nphạt là 0,03% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-follow_up-03",
+      "type": "follow_up",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 356.3,
+      "citations": [
+        {
+          "document": "HopDong_AnBinh.pdf",
+          "page": 4,
+          "cited_text": "Mỗi bên được đơn phương chấm dứt hợp đồng nếu báo trước 45\nngày bằng văn bản.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-follow_up-04",
+      "type": "follow_up",
+      "lang": "vi",
+      "passed": false,
+      "reason": "trả lời câu hỏi tiếp theo chưa đúng",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 207.5,
+      "citations": [
+        {
+          "document": "HopDong_TruongSon.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty Trường Sơn thanh toán chậm, mức\nphạt là 0,1% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-follow_up-05",
+      "type": "follow_up",
+      "lang": "vi",
+      "passed": false,
+      "reason": "trả lời câu hỏi tiếp theo chưa đúng",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 148.5,
+      "citations": [
+        {
+          "document": "HopDong_TruongSon.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty Trường Sơn thanh toán chậm, mức\nphạt là 0,1% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-follow_up-06",
+      "type": "follow_up",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 124.9,
+      "citations": [
+        {
+          "document": "HopDong_MinhLong.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty Minh Long thanh toán chậm, mức phạt\nlà 0,1% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-follow_up-07",
+      "type": "follow_up",
+      "lang": "vi",
+      "passed": false,
+      "reason": "trả lời câu hỏi tiếp theo chưa đúng",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 185.4,
+      "citations": [
+        {
+          "document": "HopDong_TruongSon.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty Trường Sơn thanh toán chậm, mức\nphạt là 0,1% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-follow_up-08",
+      "type": "follow_up",
+      "lang": "vi",
+      "passed": false,
+      "reason": "trả lời câu hỏi tiếp theo chưa đúng",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 139.8,
+      "citations": [
+        {
+          "document": "HopDong_AnBinh.pdf",
+          "page": 4,
+          "cited_text": "Mỗi bên được đơn phương chấm dứt hợp đồng nếu báo trước 45\nngày bằng văn bản.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-follow_up-09",
+      "type": "follow_up",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 141.0,
+      "citations": [
+        {
+          "document": "HopDong_PhuGia.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty Phú Gia thanh toán chậm, mức phạt là\n0,03% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-follow_up-10",
+      "type": "follow_up",
+      "lang": "vi",
+      "passed": false,
+      "reason": "trả lời câu hỏi tiếp theo chưa đúng",
+      "correct": false,
+      "source_ok": false,
+      "not_found": false,
+      "latency_ms": 198.2,
+      "citations": [
+        {
+          "document": "HopDong_PhuGia.pdf",
+          "page": 4,
+          "cited_text": "Mỗi bên được đơn phương chấm dứt hợp đồng nếu báo trước 45\nngày bằng văn bản.",
+          "in_page": true
+        }
+      ]
+    },
+    {
+      "id": "v1-follow_up-11",
+      "type": "follow_up",
+      "lang": "vi",
+      "passed": true,
+      "reason": "",
+      "correct": true,
+      "source_ok": true,
+      "not_found": false,
+      "latency_ms": 200.0,
+      "citations": [
+        {
+          "document": "HopDong_TruongSon.pdf",
+          "page": 3,
+          "cited_text": "Nếu Công ty Trường Sơn thanh toán chậm, mức\nphạt là 0,1% mỗi ngày trên số tiền chậm trả.",
+          "in_page": true
+        }
+      ]
+    }
+  ]
+}

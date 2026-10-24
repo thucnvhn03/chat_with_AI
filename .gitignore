@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Môi trường và bí mật (không commit khóa API, mật khẩu)
+.env
+.env.*
+!deploy/env.example
+
+# Khác
+*.log
+.DS_Store
+Thumbs.db
+
+# Sinh lại được: bộ PDF tổng hợp (evaluation/spikes/make_corpus.py), kết quả Playwright
+evaluation/spikes/corpus/
+e2e/test-results/
+e2e/playwright-report/
+
+# Bộ nhớ đệm mô hình embedding cho spike (nằm trên ổ D:, không commit)
+.cache/

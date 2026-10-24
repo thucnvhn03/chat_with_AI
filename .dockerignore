@@ -1,0 +1,17 @@
+# Loại khỏi ngữ cảnh build Docker (ngữ cảnh là thư mục gốc kho mã)
+.git
+node_modules
+**/node_modules
+**/dist
+**/__pycache__
+**/.venv
+**/.mypy_cache
+**/.ruff_cache
+**/.pytest_cache
+.env
+**/.env
+docs
+analysis
+design
+requirements
+verification

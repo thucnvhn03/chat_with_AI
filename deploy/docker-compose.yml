@@ -1,0 +1,150 @@
+# Môi trường phát triển cục bộ: PostgreSQL (pgvector), kho đối tượng S3, backend, worker, frontend.
+# Chạy từ thư mục gốc kho mã:   docker compose -f deploy/docker-compose.yml up --build
+# Mọi giá trị mặc định nằm ở deploy/env.example; ghi đè bằng deploy/.env (không commit).
+#
+# Kho đối tượng: ảnh MinIO cộng đồng không còn phát hành công khai trên Docker Hub/quay.io, nên môi
+# trường cục bộ dùng RustFS (Apache-2.0, tương thích API S3). Ứng dụng chỉ nói giao thức S3 qua cổng
+# FileStore (P-03), nên đổi sang MinIO/S3 thật chỉ cần đổi S3_ENDPOINT_URL và khóa.
+name: chat-with-docs
+
+x-app-env: &app-env
+  env_file:
+    - path: env.example
+      required: true
+    - path: .env
+      required: false
+
+x-backend-build: &backend-build
+  build:
+    context: ..
+    dockerfile: deploy/Dockerfile.backend
+    args:
+      INSTALL_EXTRAS: ${BACKEND_EXTRAS:-dev,embedding}
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-chat}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-chat_dev_password}
+      POSTGRES_DB: ${POSTGRES_DB:-chat}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-chat} -d ${POSTGRES_DB:-chat}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  objectstore:
+    image: rustfs/rustfs:1.0.3
+    environment:
+      RUSTFS_ACCESS_KEY: ${S3_ACCESS_KEY:-chat_s3}
+      RUSTFS_SECRET_KEY: ${S3_SECRET_KEY:-chat_s3_dev_password}
+    ports:
+      - "127.0.0.1:${S3_API_PORT:-9000}:9000"
+      - "127.0.0.1:${S3_CONSOLE_PORT:-9001}:9001"
+    volumes:
+      - s3_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:9000/health >/dev/null"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  # Chạy migration một lần trước khi backend và worker khởi động (implement_plan.md mục 10.4 bước 4).
+  migrate:
+    <<: [*app-env, *backend-build]
+    command: ["alembic", "upgrade", "head"]
+    volumes:
+      - ../backend:/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+
+  # Tải mô hình embedding một lần vào volume model_cache (tránh backend và worker cùng tải một tệp)
+  model-download:
+    <<: [*app-env, *backend-build]
+    command: ["python", "-m", "app.cli", "download-model"]
+    volumes:
+      - ../backend:/app
+      - model_cache:/models
+    restart: "no"
+
+  backend:
+    <<: [*app-env, *backend-build]
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    ports:
+      - "127.0.0.1:${BACKEND_PORT:-8000}:8000"
+    volumes:
+      - ../backend:/app
+      - model_cache:/models
+    depends_on:
+      model-download:
+        condition: service_completed_successfully
+      migrate:
+        condition: service_completed_successfully
+      objectstore:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request as u; u.urlopen('http://127.0.0.1:8000/health/live', timeout=3)"]
+      interval: 5s
+      timeout: 5s
+      # Lần đầu chạy với EMBEDDING_PROVIDER=local, mô hình được tải về volume model_cache (vài GB)
+      start_period: 600s
+      retries: 20
+
+  worker:
+    <<: [*app-env, *backend-build]
+    command: ["python", "-m", "app.worker.run"]
+    volumes:
+      - ../backend:/app
+      - model_cache:/models
+    depends_on:
+      model-download:
+        condition: service_completed_successfully
+      migrate:
+        condition: service_completed_successfully
+      objectstore:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.frontend
+    environment:
+      # Yêu cầu /api từ trình duyệt được Vite chuyển tiếp tới backend trong mạng Docker
+      VITE_API_PROXY_TARGET: http://backend:8000
+      # Trên Windows/macOS, thư mục gắn vào cần thăm dò thay đổi tệp để tải lại nóng hoạt động
+      CHOKIDAR_USEPOLLING: "true"
+    ports:
+      - "127.0.0.1:${FRONTEND_PORT:-5173}:5173"
+    volumes:
+      - ../frontend:/app
+      - frontend_node_modules:/app/node_modules
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  # Giám sát cục bộ (US-021): docker compose -f deploy/docker-compose.yml --profile monitoring up -d
+  # Hệ thống giám sát chính thức theo AQ-005; đây là cấu hình mặc định để kiểm tra luật cảnh báo.
+  prometheus:
+    image: prom/prometheus:v3.1.0
+    profiles: ["monitoring"]
+    volumes:
+      - ./monitoring:/etc/prometheus:ro
+    ports:
+      - "127.0.0.1:${PROMETHEUS_PORT:-9090}:9090"
+    depends_on:
+      - backend
+      - worker
+
+volumes:
+  pg_data:
+  s3_data:
+  # Mô hình embedding tải một lần, dùng chung giữa backend và worker (HF_HOME=/models)
+  model_cache:
+  frontend_node_modules:

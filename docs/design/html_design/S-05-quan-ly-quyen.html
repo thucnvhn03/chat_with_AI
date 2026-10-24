@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S-05 Quản lý quyền — Chat với tài liệu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-default="default">
+<a class="skip-link" href="#main">Bỏ qua tới nội dung chính</a>
+
+<div class="demo-bar" role="group" aria-label="Chọn trạng thái xem mẫu (không thuộc sản phẩm)">
+  <strong>Xem mẫu S-05:</strong>
+  <button type="button" data-state-btn="default">Có người dùng</button>
+  <button type="button" data-state-btn="confirm">Xác nhận thu hồi</button>
+  <button type="button" data-state-btn="empty">Chưa có người dùng</button>
+  <a href="index.html">Danh sách màn hình</a>
+  <span id="state-live" aria-live="polite" style="position:absolute;left:-9999px"></span>
+</div>
+
+<header class="app-header">
+  <a class="brand" href="S-05-quan-ly-quyen.html"><span class="brand-mark" aria-hidden="true">C</span> Chat với tài liệu</a>
+  <div class="header-right">
+    <span class="user-chip">Quản trị bảo mật (tên người dùng)</span>
+    <a class="btn btn-sm" href="S-01-dang-nhap.html">Đăng xuất</a>
+  </div>
+</header>
+
+<div class="admin">
+  <nav class="side-nav" aria-label="Khu vực quản trị">
+    <a href="S-05-quan-ly-quyen.html" aria-current="page">Quản lý quyền</a>
+    <a href="S-06-ban-ghi-kiem-toan.html">Bản ghi kiểm toán</a>
+  </nav>
+
+  <main id="main">
+    <div class="page-title">
+      <div>
+        <h1>Quản lý quyền sử dụng</h1>
+        <p class="muted" style="margin:4px 0 0">Chỉ người được cấp quyền mới dùng được ứng dụng. Phạm vi chia sẻ tài liệu: <span class="tbd">OQ-003</span></p>
+      </div>
+    </div>
+
+    <div class="banner banner-warn" role="alert" data-show="confirm">
+      <span aria-hidden="true">⚠</span>
+      <div><strong>Thu hồi quyền của "user02"?</strong> Người này sẽ không đăng nhập được và không truy vấn được tài liệu nữa.</div>
+      <div class="banner-actions"><button class="btn btn-sm" type="button" data-state-btn="default">Hủy</button><button class="btn btn-sm btn-danger" type="button" data-state-btn="default">Thu hồi</button></div>
+    </div>
+
+    <section class="card" aria-labelledby="add-title" style="margin-bottom:16px">
+      <div class="toolbar">
+        <h2 id="add-title" style="width:100%">Cấp quyền cho người dùng</h2>
+        <div class="field"><label for="u">Tên đăng nhập</label><input id="u" type="text" placeholder="ví dụ: ten.ho@congty.vn"></div>
+        <div class="field"><label for="r">Vai trò</label>
+          <select id="r"><option>Nhân sự BD</option><option>Quản lý</option><option>Quản trị bảo mật</option></select></div>
+        <button class="btn btn-primary" type="button">Cấp quyền</button>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="list-title">
+      <div class="toolbar"><h2 id="list-title">Người dùng đã được cấp quyền</h2></div>
+      <div class="table-wrap" data-show="default confirm">
+        <table>
+          <caption class="sr-only" style="position:absolute;left:-9999px">Danh sách người dùng và vai trò (dữ liệu minh họa)</caption>
+          <thead><tr><th scope="col">Người dùng</th><th scope="col">Vai trò</th><th scope="col">Phạm vi tài liệu</th><th scope="col">Trạng thái</th><th scope="col">Thao tác</th></tr></thead>
+          <tbody>
+            <tr><td>user01</td><td>Nhân sự BD</td><td><span class="tbd">OQ-003</span></td><td><span class="badge badge-ok">✔ Đang hoạt động</span></td><td><button class="btn-link" type="button" data-state-btn="confirm">Thu hồi quyền</button></td></tr>
+            <tr><td>user02</td><td>Nhân sự BD</td><td><span class="tbd">OQ-003</span></td><td><span class="badge badge-ok">✔ Đang hoạt động</span></td><td><button class="btn-link" type="button" data-state-btn="confirm">Thu hồi quyền</button></td></tr>
+            <tr><td>user03</td><td>Quản lý</td><td>Không áp dụng</td><td><span class="badge badge-ok">✔ Đang hoạt động</span></td><td><button class="btn-link" type="button" data-state-btn="confirm">Thu hồi quyền</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="empty" data-show="empty">
+        <div class="empty-icon" aria-hidden="true">👤</div>
+        <h3>Chưa có người dùng nào được cấp quyền</h3>
+        <p>Hãy nhập tên đăng nhập ở phần trên rồi chọn "Cấp quyền".</p>
+      </div>
+    </section>
+    <p class="small muted">Dữ liệu trong bảng là minh họa.</p>
+  </main>
+</div>
+
+<details class="notes">
+  <summary>Ghi chú thiết kế (không thuộc giao diện)</summary>
+  <ul>
+    <li>Thành phần: C-17 AdminArea, C-18 AccessManager. Thao tác: IF-08. Story: US-017, US-018 (BR-014, BR-020; BRU-004, BRU-005).</li>
+    <li>Chỉ vai trò Quản trị bảo mật vào được màn hình này; người khác nhận trạng thái từ chối truy cập (sự kiện <code>access_denied</code>).</li>
+    <li>Thu hồi quyền cần xác nhận. Nút thu hồi và cấp quyền dùng chữ rõ nghĩa, không chỉ dùng màu.</li>
+    <li>Cột "Phạm vi tài liệu" phụ thuộc OQ-003; người dùng nhiều vai trò: DQ-002; phương thức đăng nhập: DQ-003.</li>
+  </ul>
+</details>
+<script src="demo.js"></script>
+</body>
+</html>

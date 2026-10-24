@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S-07 Báo cáo mức sử dụng — Chat với tài liệu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-default="default">
+<a class="skip-link" href="#main">Bỏ qua tới nội dung chính</a>
+
+<div class="demo-bar" role="group" aria-label="Chọn trạng thái xem mẫu (không thuộc sản phẩm)">
+  <strong>Xem mẫu S-07:</strong>
+  <button type="button" data-state-btn="default">Có dữ liệu</button>
+  <button type="button" data-state-btn="empty">Chưa có dữ liệu</button>
+  <button type="button" data-state-btn="error">Không tải được</button>
+  <a href="index.html">Danh sách màn hình</a>
+  <span id="state-live" aria-live="polite" style="position:absolute;left:-9999px"></span>
+</div>
+
+<header class="app-header">
+  <a class="brand" href="S-07-bao-cao-su-dung.html"><span class="brand-mark" aria-hidden="true">C</span> Chat với tài liệu</a>
+  <div class="header-right">
+    <span class="user-chip">Quản lý (tên người dùng)</span>
+    <a class="btn btn-sm" href="S-01-dang-nhap.html">Đăng xuất</a>
+  </div>
+</header>
+
+<main id="main" style="padding:20px 24px;max-width:1100px">
+  <div class="page-title">
+    <div>
+      <h1>Báo cáo mức sử dụng</h1>
+      <p class="muted" style="margin:4px 0 0">Số liệu hằng tuần trong giai đoạn thử nghiệm: người dùng hoạt động và số câu hỏi.</p>
+    </div>
+    <div class="field" style="margin:0;width:200px"><label for="rng">Khoảng thời gian</label>
+      <select id="rng"><option>4 tuần gần nhất</option><option>8 tuần gần nhất</option></select></div>
+  </div>
+
+  <div class="banner banner-err" role="alert" data-show="error">
+    <span aria-hidden="true">⚠</span>
+    <div><strong>Không tải được báo cáo.</strong> Hãy thử lại sau ít phút.</div>
+    <div class="banner-actions"><button class="btn btn-sm" type="button">Thử lại</button></div>
+  </div>
+
+  <div data-show="default">
+    <div class="banner banner-info" role="note"><span aria-hidden="true">ℹ</span><div>Các con số trong màn hình này là <strong>dữ liệu minh họa</strong>, không phải số liệu thật.</div></div>
+
+    <div class="kpis">
+      <div class="card kpi"><div class="kpi-label">Người dùng hoạt động (tuần gần nhất)</div><div class="kpi-value">[minh họa: 8]</div><div class="small muted">Mục tiêu: <span class="tbd">OQ-002</span></div></div>
+      <div class="card kpi"><div class="kpi-label">Câu hỏi (tuần gần nhất)</div><div class="kpi-value">[minh họa: 64]</div><div class="small muted">Mục tiêu: <span class="tbd">OQ-002</span></div></div>
+      <div class="card kpi"><div class="kpi-label">Câu trả lời được đánh giá hữu ích</div><div class="kpi-value">[minh họa: 75%]</div><div class="small muted">Dựa trên đánh giá của người dùng (P2)</div></div>
+    </div>
+
+    <section class="card card-pad" aria-labelledby="chart-title">
+      <h2 id="chart-title">Theo tuần</h2>
+      <div class="bars" role="img" aria-label="Biểu đồ cột minh họa: người dùng hoạt động và số câu hỏi theo bốn tuần">
+        <div class="bar-col"><div style="display:flex;gap:4px;align-items:flex-end;height:100%;width:100%;justify-content:center">
+          <div style="display:flex;flex-direction:column;justify-content:flex-end;align-items:center"><span class="bar-val">3</span><div class="bar" style="height:30px;width:28px"></div></div>
+          <div style="display:flex;flex-direction:column;justify-content:flex-end;align-items:center"><span class="bar-val">20</span><div class="bar alt" style="height:60px;width:28px"></div></div></div><div class="bar-lbl">Tuần 1</div></div>
+        <div class="bar-col"><div style="display:flex;gap:4px;align-items:flex-end;height:100%;width:100%;justify-content:center">
+          <div style="display:flex;flex-direction:column;justify-content:flex-end;align-items:center"><span class="bar-val">5</span><div class="bar" style="height:50px;width:28px"></div></div>
+          <div style="display:flex;flex-direction:column;justify-content:flex-end;align-items:center"><span class="bar-val">38</span><div class="bar alt" style="height:100px;width:28px"></div></div></div><div class="bar-lbl">Tuần 2</div></div>
+        <div class="bar-col"><div style="display:flex;gap:4px;align-items:flex-end;height:100%;width:100%;justify-content:center">
+          <div style="display:flex;flex-direction:column;justify-content:flex-end;align-items:center"><span class="bar-val">7</span><div class="bar" style="height:70px;width:28px"></div></div>
+          <div style="display:flex;flex-direction:column;justify-content:flex-end;align-items:center"><span class="bar-val">52</span><div class="bar alt" style="height:140px;width:28px"></div></div></div><div class="bar-lbl">Tuần 3</div></div>
+        <div class="bar-col"><div style="display:flex;gap:4px;align-items:flex-end;height:100%;width:100%;justify-content:center">
+          <div style="display:flex;flex-direction:column;justify-content:flex-end;align-items:center"><span class="bar-val">8</span><div class="bar" style="height:80px;width:28px"></div></div>
+          <div style="display:flex;flex-direction:column;justify-content:flex-end;align-items:center"><span class="bar-val">64</span><div class="bar alt" style="height:170px;width:28px"></div></div></div><div class="bar-lbl">Tuần 4</div></div>
+      </div>
+      <div class="legend"><span><i style="background:var(--primary)"></i>Người dùng hoạt động</span><span><i style="background:#0f766e"></i>Số câu hỏi</span></div>
+
+      <div class="table-wrap" style="margin-top:16px">
+        <table>
+          <caption>Bảng số liệu tương ứng với biểu đồ (dữ liệu minh họa)</caption>
+          <thead><tr><th scope="col">Tuần</th><th scope="col">Người dùng hoạt động</th><th scope="col">Số câu hỏi</th></tr></thead>
+          <tbody>
+            <tr><td>Tuần 1</td><td>3</td><td>20</td></tr><tr><td>Tuần 2</td><td>5</td><td>38</td></tr>
+            <tr><td>Tuần 3</td><td>7</td><td>52</td></tr><tr><td>Tuần 4</td><td>8</td><td>64</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <div class="card" data-show="empty">
+    <div class="empty">
+      <div class="empty-icon" aria-hidden="true">📊</div>
+      <h3>Chưa có dữ liệu sử dụng</h3>
+      <p>Số liệu sẽ xuất hiện sau khi người dùng bắt đầu dùng ứng dụng trong giai đoạn thử nghiệm.</p>
+    </div>
+  </div>
+</main>
+
+<details class="notes">
+  <summary>Ghi chú thiết kế (không thuộc giao diện)</summary>
+  <ul>
+    <li>Thành phần: C-20 UsageReportView. Thao tác: IF-10. Story: US-022, US-023 (BR-016, BR-021; MET-003). Chỉ vai trò Quản lý truy cập được.</li>
+    <li>Biểu đồ có kèm bảng số liệu và nhãn chữ để không phụ thuộc màu hay thị giác. Hai cột dùng hai màu có tương phản khác nhau và có chú giải.</li>
+    <li>Tỷ lệ "hữu ích" chỉ có khi tính năng đánh giá (US-024, P2) được làm. Mục tiêu định lượng chờ OQ-002.</li>
+    <li>Toàn bộ con số là minh họa.</li>
+  </ul>
+</details>
+<script src="demo.js"></script>
+</body>
+</html>

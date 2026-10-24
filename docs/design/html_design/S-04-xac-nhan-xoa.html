@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S-04 Xác nhận xóa — Chat với tài liệu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-default="default">
+<div class="demo-bar" role="group" aria-label="Chọn trạng thái xem mẫu (không thuộc sản phẩm)">
+  <strong>Xem mẫu S-04:</strong>
+  <button type="button" data-state-btn="default">Hộp thoại xác nhận</button>
+  <button type="button" data-state-btn="failed">Xóa không thành công</button>
+  <a href="index.html">Danh sách màn hình</a>
+  <span id="state-live" aria-live="polite" style="position:absolute;left:-9999px"></span>
+</div>
+
+<div class="backdrop-wrap">
+  <!-- Màn hình chính làm nền, bị làm mờ và không thao tác được -->
+  <iframe src="S-02-man-hinh-chinh.html" title="Màn hình chính ở phía sau hộp thoại" tabindex="-1" aria-hidden="true"></iframe>
+
+  <div class="overlay">
+    <!-- C-05 DeleteConfirmDialog -->
+    <div class="dialog" role="alertdialog" aria-modal="true" aria-labelledby="dlg-title" aria-describedby="dlg-desc">
+      <h2 id="dlg-title">Xóa tài liệu "TaiLieu_C.pdf"?</h2>
+      <p id="dlg-desc">Tài liệu sẽ bị gỡ khỏi tập tài liệu của bạn và không còn được dùng để trả lời. Nội dung sẽ bị xóa vĩnh viễn trong vòng <span class="tbd">OQ-012</span> ngày. <strong>Thao tác này không thể hoàn tác.</strong></p>
+      <div class="banner banner-err" role="alert" data-show="failed" style="margin-top:12px">
+        <span aria-hidden="true">⚠</span>
+        <div>Chưa xóa được tài liệu. Hãy thử lại sau ít phút.</div>
+      </div>
+      <div class="dialog-actions">
+        <a class="btn" href="S-02-man-hinh-chinh.html" autofocus>Hủy</a>
+        <a class="btn btn-danger" href="S-02-man-hinh-chinh.html">Xóa vĩnh viễn</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<details class="notes">
+  <summary>Ghi chú thiết kế (không thuộc giao diện)</summary>
+  <ul>
+    <li>Thành phần: C-05 DeleteConfirmDialog. Thao tác: IF-04. Story: US-006, US-007 (BR-005, BR-024). Sự kiện: <code>document_deleted</code>.</li>
+    <li>Tiêu điểm bàn phím mặc định đặt ở nút "Hủy" để tránh xóa nhầm; nút xóa dùng màu đỏ kèm chữ rõ nghĩa.</li>
+    <li>Sau khi xóa thành công: tài liệu biến khỏi danh sách và các câu hỏi chỉ có đáp án trong tài liệu đó trả về "không tìm thấy thông tin" (AC-005).</li>
+    <li>Thời hạn xóa vĩnh viễn chưa chốt (OQ-012).</li>
+  </ul>
+</details>
+<script src="demo.js"></script>
+</body>
+</html>

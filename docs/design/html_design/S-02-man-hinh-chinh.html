@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S-02 Màn hình chính — Chat với tài liệu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-default="default">
+<a class="skip-link" href="#chat">Bỏ qua tới hội thoại</a>
+
+<div class="demo-bar" role="group" aria-label="Chọn trạng thái xem mẫu (không thuộc sản phẩm)">
+  <strong>Xem mẫu S-02:</strong>
+  <button type="button" data-state-btn="default">Có tài liệu và hội thoại</button>
+  <button type="button" data-state-btn="empty">Chưa có tài liệu</button>
+  <button type="button" data-state-btn="waiting">Đang chờ câu trả lời</button>
+  <button type="button" data-state-btn="offline-ask">Mất kết nối khi hỏi</button>
+  <button type="button" data-state-btn="offline-upload">Mất kết nối khi tải lên</button>
+  <a href="index.html">Danh sách màn hình</a>
+  <span id="state-live" aria-live="polite" style="position:absolute;left:-9999px"></span>
+</div>
+
+<header class="app-header">
+  <a class="brand" href="S-02-man-hinh-chinh.html"><span class="brand-mark" aria-hidden="true">C</span> Chat với tài liệu</a>
+  <div class="header-right">
+    <span class="user-chip">Nhân sự BD (tên người dùng)</span>
+    <a class="btn btn-sm" href="S-01-dang-nhap.html">Đăng xuất</a>
+  </div>
+</header>
+
+<div style="padding:12px 24px 0">
+  <div class="banner banner-err" role="alert" data-show="offline-ask" style="margin:0">
+    <span aria-hidden="true">📡</span>
+    <div><strong>Mất kết nối, chưa nhận được câu trả lời.</strong> Câu hỏi của bạn vẫn được giữ lại bên dưới. Hãy kiểm tra mạng rồi gửi lại.</div>
+  </div>
+  <div class="banner banner-err" role="alert" data-show="offline-upload" style="margin:0">
+    <span aria-hidden="true">📡</span>
+    <div><strong>Mất kết nối khi tải lên.</strong> Tệp "BaoGia_B.pdf" chưa tải xong và chưa được đưa vào tập tài liệu. Hãy tải lại khi có mạng.</div>
+  </div>
+</div>
+
+<div class="workspace">
+  <!-- Vùng tài liệu: C-02 DocumentPanel -->
+  <aside class="card panel" aria-labelledby="docs-title">
+    <div class="panel-head">
+      <h2 id="docs-title">Tài liệu của tôi</h2>
+      <span class="small muted" data-show="default waiting offline-ask">3 tệp</span>
+    </div>
+    <div class="panel-body">
+      <!-- C-03 UploadControl -->
+      <div class="dropzone">
+        <button class="btn btn-primary" type="button">＋ Tải PDF lên</button>
+        <p class="small muted" style="margin:8px 0 0">Chọn một hoặc nhiều tệp PDF. Giới hạn số lượng và dung lượng: <span class="tbd">OQ-004</span></p>
+      </div>
+
+      <!-- Trạng thái trống: C-10 EmptyState -->
+      <div class="empty" data-show="empty">
+        <div class="empty-icon" aria-hidden="true">📄</div>
+        <h3>Chưa có tài liệu nào</h3>
+        <p>Hãy tải ít nhất một tệp PDF lên. Sau đó bạn có thể hỏi về nội dung của tất cả các tài liệu.</p>
+      </div>
+
+      <!-- C-04 DocumentList + C-06 StatusBadge -->
+      <ul class="doc-list" aria-label="Danh sách tài liệu" data-show="default waiting offline-ask">
+        <li class="doc-item">
+          <div class="doc-item-top"><span class="doc-name" title="HopDong_A.pdf">HopDong_A.pdf</span><span class="badge badge-ok">✔ Sẵn sàng</span></div>
+          <div class="doc-meta">12 trang · 2,1 MB</div>
+          <div class="doc-actions"><a class="btn-link" href="S-04-xac-nhan-xoa.html">Xóa</a></div>
+        </li>
+        <li class="doc-item">
+          <div class="doc-item-top"><span class="doc-name" title="BaoGia_B.pdf">BaoGia_B.pdf</span><span class="badge badge-warn">⏳ Đang xử lý</span></div>
+          <div class="doc-meta">Chưa dùng được để trả lời cho tới khi xử lý xong</div>
+          <div class="progress" role="progressbar" aria-label="Tiến độ xử lý BaoGia_B.pdf" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"><span style="width:60%"></span></div>
+        </li>
+        <li class="doc-item">
+          <div class="doc-item-top"><span class="doc-name" title="TaiLieu_C.pdf">TaiLieu_C.pdf</span><span class="badge badge-err">✖ Lỗi</span></div>
+          <div class="doc-meta">Lý do: tài liệu bị khóa hoặc mã hóa. Hãy mở khóa rồi tải lại.</div>
+          <div class="doc-actions"><button class="btn-link" type="button">Thử lại</button><a class="btn-link" href="S-04-xac-nhan-xoa.html">Xóa</a></div>
+        </li>
+      </ul>
+
+      <ul class="doc-list" aria-label="Danh sách tài liệu" data-show="offline-upload">
+        <li class="doc-item">
+          <div class="doc-item-top"><span class="doc-name">HopDong_A.pdf</span><span class="badge badge-ok">✔ Sẵn sàng</span></div>
+          <div class="doc-meta">12 trang · 2,1 MB</div>
+        </li>
+        <li class="doc-item">
+          <div class="doc-item-top"><span class="doc-name">BaoGia_B.pdf</span><span class="badge badge-err">✖ Chưa tải xong</span></div>
+          <div class="doc-meta">Lý do: mất kết nối. Tệp chưa nằm trong tập tài liệu.</div>
+          <div class="doc-actions"><button class="btn-link" type="button">Tải lại</button><button class="btn-link" type="button">Bỏ qua</button></div>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Vùng hội thoại: C-07 ChatPanel -->
+  <section id="chat" class="card panel" aria-labelledby="chat-title">
+    <div class="panel-head"><h2 id="chat-title">Hội thoại</h2><span class="small muted">Câu trả lời chỉ dựa trên các tài liệu bạn đã tải lên</span></div>
+    <div class="panel-body" aria-live="polite">
+      <div class="empty" data-show="empty">
+        <div class="empty-icon" aria-hidden="true">💬</div>
+        <h3>Bắt đầu bằng việc tải tài liệu lên</h3>
+        <p>Khi có tài liệu sẵn sàng, bạn có thể hỏi bằng câu tự nhiên, ví dụ: "Điều khoản thanh toán của hợp đồng A là gì?"</p>
+      </div>
+
+      <div class="messages" data-show="default waiting offline-ask">
+        <div class="msg msg-user" data-show="default waiting offline-ask">Điều khoản thanh toán của hợp đồng A là gì?</div>
+
+        <!-- C-11 AnswerCard, C-12 SourceChip, C-13 FeedbackControl -->
+        <article class="msg msg-ai" data-show="default" aria-label="Câu trả lời">
+          <p>Hợp đồng A quy định thanh toán thành hai đợt: [nội dung minh họa]. Báo giá B nêu thêm điều kiện áp dụng cho đợt hai: [nội dung minh họa].</p>
+          <div class="sources"><span class="label">Nguồn:</span>
+            <a class="chip" href="S-03-trinh-xem-nguon.html" aria-label="Mở nguồn HopDong_A.pdf trang 5">📄 HopDong_A.pdf, tr.5</a>
+            <a class="chip" href="S-03-trinh-xem-nguon.html" aria-label="Mở nguồn BaoGia_B.pdf trang 2">📄 BaoGia_B.pdf, tr.2</a>
+          </div>
+          <div class="feedback" role="group" aria-label="Đánh giá câu trả lời">Câu trả lời này
+            <button class="btn btn-sm" type="button" aria-pressed="false">👍 Hữu ích</button>
+            <button class="btn btn-sm" type="button" aria-pressed="false">👎 Không hữu ích</button>
+          </div>
+        </article>
+
+        <div class="msg msg-user" data-show="default">Còn điều khoản phạt khi giao trễ?</div>
+
+        <!-- C-15 NotFoundNotice -->
+        <div class="notfound" role="status" data-show="default">
+          <strong>Không tìm thấy thông tin này trong các tài liệu đã tải lên.</strong>
+          <p style="margin:6px 0 0">Bạn có thể bổ sung tài liệu có liên quan hoặc đổi cách đặt câu hỏi.</p>
+        </div>
+
+        <!-- Đang chờ -->
+        <div class="thinking" role="status" data-show="waiting">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>Đang xử lý câu hỏi…</span>
+          <button class="btn btn-sm" type="button">Hủy</button>
+        </div>
+
+        <!-- Lỗi khi hỏi: giữ lại câu hỏi -->
+        <div class="banner banner-err" role="alert" data-show="offline-ask" style="max-width:86%;margin:0">
+          <span aria-hidden="true">⚠</span>
+          <div>Không gửi được câu hỏi này. Chưa có câu trả lời.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- C-09 QuestionInput -->
+    <form class="composer" onsubmit="return false" data-show="default">
+      <label for="q1" class="sr-only" style="position:absolute;left:-9999px">Câu hỏi của bạn</label>
+      <textarea id="q1" rows="1" placeholder="Nhập câu hỏi về nội dung tài liệu…"></textarea>
+      <button class="btn btn-primary" type="submit">Gửi</button>
+    </form>
+    <form class="composer" onsubmit="return false" data-show="empty">
+      <label for="q2" style="position:absolute;left:-9999px">Câu hỏi của bạn</label>
+      <textarea id="q2" rows="1" disabled placeholder="Hãy tải tài liệu lên trước khi đặt câu hỏi"></textarea>
+      <button class="btn btn-primary" type="submit" disabled>Gửi</button>
+    </form>
+    <form class="composer" onsubmit="return false" data-show="waiting">
+      <label for="q3" style="position:absolute;left:-9999px">Câu hỏi của bạn</label>
+      <textarea id="q3" rows="1" disabled placeholder="Đang chờ câu trả lời…"></textarea>
+      <button class="btn btn-primary" type="submit" disabled>Gửi</button>
+    </form>
+    <form class="composer" onsubmit="return false" data-show="offline-ask">
+      <label for="q4" style="position:absolute;left:-9999px">Câu hỏi của bạn</label>
+      <textarea id="q4" rows="1">Điều khoản thanh toán của hợp đồng A là gì?</textarea>
+      <button class="btn btn-primary" type="submit">Gửi lại</button>
+    </form>
+    <form class="composer" onsubmit="return false" data-show="offline-upload">
+      <label for="q5" style="position:absolute;left:-9999px">Câu hỏi của bạn</label>
+      <textarea id="q5" rows="1" placeholder="Nhập câu hỏi về nội dung tài liệu…"></textarea>
+      <button class="btn btn-primary" type="submit">Gửi</button>
+    </form>
+    <p class="field-hint" data-show="default empty offline-upload">Giới hạn độ dài câu hỏi: <span class="tbd">PQ-002</span></p>
+  </section>
+</div>
+
+<details class="notes">
+  <summary>Ghi chú thiết kế (không thuộc giao diện)</summary>
+  <ul>
+    <li>Thành phần: C-02..C-13, C-15, C-16, C-10. Thao tác: IF-02, IF-03, IF-04, IF-05, IF-07. Story: US-001..011, US-013..015, US-024.</li>
+    <li>Trạng thái trống: ô nhập bị vô hiệu kèm giải thích; có tài liệu đang xử lý thì chỉ báo rõ tài liệu đó chưa được dùng (PRD 4.2).</li>
+    <li>Mất kết nối: không hiển thị câu trả lời dở dang; câu hỏi được giữ lại để gửi lại. Tệp tải lên dở dang không được hiển thị là "đã vào".</li>
+    <li>Nội dung câu trả lời và tên tệp trong màn hình này là dữ liệu minh họa.</li>
+    <li>Sự kiện phân tích: <code>document_upload_*</code>, <code>question_submitted</code>, <code>answer_returned</code>, <code>source_opened</code>, <code>answer_feedback_submitted</code> (PRD 5.2).</li>
+    <li>Chuyển sang S-03 khi chọn nguồn, sang S-04 khi chọn Xóa.</li>
+  </ul>
+</details>
+<script src="demo.js"></script>
+</body>
+</html>

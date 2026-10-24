@@ -1,0 +1,41 @@
+# Kiểm thử luật cảnh báo (AC-022): dừng một thành phần → cảnh báo phát.
+#   docker run --rm -v "$PWD/deploy/monitoring:/m" --entrypoint promtool prom/prometheus test rules /m/alerts_test.yml
+rule_files:
+  - alerts.yml
+evaluation_interval: 1m
+tests:
+  - interval: 1m
+    input_series:
+      - series: 'component_up{component="storage"}'
+        values: "1 1 0 0 0 0 0"
+      - series: 'component_up{component="database"}'
+        values: "1 1 1 1 1 1 1"
+      - series: 'up{job="worker"}'
+        values: "1 0 0 0 0 0 0 0"
+      - series: 'documents_deleting_overdue'
+        values: "0 0 1 1 1 1 1 1 1 1 1 1 1 1"
+    alert_rule_test:
+      - eval_time: 5m
+        alertname: ComponentUnavailable
+        exp_alerts:
+          - exp_labels: { severity: critical, decision: OQ-011, component: storage }
+            exp_annotations:
+              summary: "Thành phần storage không đạt kiểm tra /health/ready"
+              runbook: "docs/implement/ops_runbook.md#su-co-dich-vu-khong-phan-hoi"
+      - eval_time: 1m
+        alertname: WorkerDown
+        exp_alerts: []
+      - eval_time: 7m
+        alertname: WorkerDown
+        exp_alerts:
+          - exp_labels: { severity: critical, decision: OQ-011, job: worker }
+            exp_annotations:
+              summary: "Worker không chạy: tài liệu sẽ không được xử lý và không được xóa vĩnh viễn"
+              runbook: "docs/implement/ops_runbook.md#su-co-dich-vu-khong-phan-hoi"
+      - eval_time: 13m
+        alertname: DocumentsDeletingOverdue
+        exp_alerts:
+          - exp_labels: { severity: critical, decision: OQ-012 }
+            exp_annotations:
+              summary: "Có tài liệu ở trạng thái deleting quá PURGE_SLA_HOURS (cam kết xóa vĩnh viễn, US-007)"
+              runbook: "docs/implement/ops_runbook.md#tai-lieu-deleting-qua-han"

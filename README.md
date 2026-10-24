@@ -77,6 +77,63 @@ Supporting checklist spreadsheets sit next to the prompts they validate:
 
 This repository is organized as a collection of reusable prompts and review checklists. It is best used as a starting point for generating structured SDLC documentation rather than as a completed product application.
 
+## Application code: "Chat với tài liệu" (MVP)
+
+Besides the prompts, this repository now also holds the source code of the MVP described in [`docs/requirements/`](./docs/requirements) and planned in [`docs/implement/`](./docs/implement). The plan is in [`implement_plan.md`](./docs/implement/implement_plan.md); one file per task is in [`docs/implement/tasks/`](./docs/implement/tasks).
+
+| Folder | Content |
+|---|---|
+| [`backend/`](./backend) | Python 3.12 backend (FastAPI, SQLAlchemy, Alembic, pgvector), worker, adapters for Claude, local embedding, S3, local/OIDC login |
+| [`frontend/`](./frontend) | React 18 + TypeScript + Vite: screens S-01..S-07 |
+| [`evaluation/`](./evaluation) | Quality evaluation runner, datasets, spikes (PDF extraction, embedding retrieval, generation) |
+| [`e2e/`](./e2e) | Playwright end-to-end tests (with axe accessibility checks) |
+| [`deploy/`](./deploy) | Docker Compose (dev, E2E override, monitoring profile), Dockerfiles, nginx, Prometheus alert rules |
+
+The technology stack is a proposal pending decision gate G0 (see `implement_plan.md`, section 1). Operating guide: [`docs/implement/ops_runbook.md`](./docs/implement/ops_runbook.md). Data handling record: [`docs/implement/data_handling.md`](./docs/implement/data_handling.md).
+
+### Prerequisites
+
+- Docker 24+ with Docker Compose v2 (enough to run everything; no local Python needed)
+- Node.js 20+ and npm (frontend checks, E2E)
+- Optional: Python 3.12 to run backend tools without Docker
+
+### Run the application locally
+
+```bash
+docker compose -f deploy/docker-compose.yml up -d --build --wait
+docker compose -f deploy/docker-compose.yml exec backend python -m app.cli create-admin admin
+# create a BD user, then open http://localhost:5173
+docker compose -f deploy/docker-compose.yml exec backend python -m app.cli create-user an.nguyen bd
+```
+
+Defaults come from `deploy/env.example`; put overrides and secrets (e.g. `ANTHROPIC_API_KEY`, `ANSWER_PROVIDER=claude`, ports) in `deploy/.env` (git-ignored). The first start downloads the embedding model `BAAI/bge-m3` (~2.3 GB) once (service `model-download`). Without an API key keep `ANSWER_PROVIDER=fake` (canned answers with real citations, for UI work).
+
+### Run the checks
+
+Backend, in Docker (needs `docker compose -f deploy/docker-compose.yml up -d postgres objectstore`):
+
+```bash
+scripts/backend-docker.sh                 # ruff, mypy, import-linter, all pytest (unit, integration, security)
+scripts/backend-docker.sh pytest tests/unit -q
+```
+
+Backend without Docker (from `backend/`): `pip install -e ".[dev]"` then `ruff check app tests alembic`, `mypy`, `lint-imports`, `pytest`. Integration tests start PostgreSQL (pgvector) and an S3 store with testcontainers, or use `TEST_DATABASE_URL` / `TEST_S3_ENDPOINT_URL` when set.
+
+Frontend (from `frontend/`): `npm ci && npm run lint && npm run typecheck && npm test`. After an API change: export OpenAPI with `python backend/scripts/export_openapi.py frontend/src/api/openapi.json`, then `npm run gen:api`.
+
+End-to-end (fake AI adapter, seeded accounts):
+
+```bash
+docker compose -f deploy/docker-compose.yml -f deploy/docker-compose.e2e.yml up -d --build --wait
+cd e2e && npm ci && npx playwright install chromium && npx playwright test
+```
+
+Evaluation: `python evaluation/run_eval.py --dataset evaluation/datasets/sample.jsonl --fake` (see `evaluation/README.md`).
+
+### Dependency rules
+
+`backend/.importlinter` enforces: modules in `app/modules` must not import `app/adapters`, and `app/api` must not import `app/adapters` directly. Business modules depend only on the ports in `app/ports`; adapters are wired in at `app/container.py`.
+
 ## License
 
 This repository does not currently declare a specific license. If you plan to redistribute or reuse it publicly, add an appropriate license file and terms.

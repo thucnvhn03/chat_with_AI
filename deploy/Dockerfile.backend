@@ -1,0 +1,46 @@
+# Ảnh backend và worker.
+# Ngữ cảnh build là thư mục gốc kho mã (xem docker-compose.yml).
+#
+# INSTALL_EXTRAS chọn nhóm phụ thuộc tùy chọn của backend/pyproject.toml:
+#   - "embedding": sentence-transformers + torch bản CPU, cần khi EMBEDDING_PROVIDER=local
+#   - "dev": công cụ kiểm thử và lint (môi trường phát triển, CI)
+# Ảnh production chỉ cần "embedding".
+FROM python:3.12-slim
+
+ARG INSTALL_EXTRAS=embedding
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DEFAULT_TIMEOUT=120 \
+    PIP_RETRIES=10
+
+WORKDIR /app
+
+# Phông DejaVu (có đủ dấu tiếng Việt) để sinh PDF kiểm thử tổng hợp — chỉ ở ảnh có nhóm "dev"
+RUN case ",${INSTALL_EXTRAS}," in \
+      *,dev,*) apt-get update && apt-get install -y --no-install-recommends fonts-dejavu-core \
+               && rm -rf /var/lib/apt/lists/* ;; \
+    esac
+
+# torch bản CPU lấy từ kho riêng của PyTorch để tránh tải bản CUDA (vài GB) không dùng tới
+RUN case ",${INSTALL_EXTRAS}," in \
+      *,embedding,*) pip install --index-url https://download.pytorch.org/whl/cpu torch ;; \
+    esac
+
+# Cài phụ thuộc trước để tận dụng bộ nhớ đệm lớp khi chỉ mã nguồn thay đổi
+COPY backend/pyproject.toml ./
+RUN mkdir -p app && touch app/__init__.py \
+    && pip install -e ".[${INSTALL_EXTRAS}]"
+
+COPY backend/ ./
+
+# Tài khoản không phải root
+RUN useradd --create-home --uid 10001 appuser \
+    && mkdir -p /models && chown appuser /models
+USER appuser
+
+EXPOSE 8000
+# --proxy-headers: lấy địa chỉ thật của người dùng từ X-Forwarded-For (giới hạn đăng nhập sai theo địa chỉ).
+# Chỉ tin proxy được liệt kê trong biến FORWARDED_ALLOW_IPS (mặc định của uvicorn: 127.0.0.1).
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--proxy-headers"]

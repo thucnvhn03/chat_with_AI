@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S-03 Trình xem nguồn — Chat với tài liệu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-default="default">
+<a class="skip-link" href="#doc">Bỏ qua tới trang tài liệu</a>
+
+<div class="demo-bar" role="group" aria-label="Chọn trạng thái xem mẫu (không thuộc sản phẩm)">
+  <strong>Xem mẫu S-03:</strong>
+  <button type="button" data-state-btn="default">Có nguồn</button>
+  <button type="button" data-state-btn="deleted">Tài liệu đã bị xóa</button>
+  <a href="index.html">Danh sách màn hình</a>
+  <span id="state-live" aria-live="polite" style="position:absolute;left:-9999px"></span>
+</div>
+
+<header class="app-header">
+  <a class="brand" href="S-02-man-hinh-chinh.html"><span class="brand-mark" aria-hidden="true">C</span> Chat với tài liệu</a>
+  <div class="header-right">
+    <span class="user-chip">Nhân sự BD (tên người dùng)</span>
+    <a class="btn btn-sm" href="S-01-dang-nhap.html">Đăng xuất</a>
+  </div>
+</header>
+
+<div class="viewer">
+  <section class="card" aria-labelledby="v-title">
+    <div class="viewer-toolbar">
+      <a class="btn btn-sm" href="S-02-man-hinh-chinh.html">← Quay lại hội thoại</a>
+      <h1 id="v-title" style="font-size:1.0625rem">HopDong_A.pdf</h1>
+      <span class="badge badge-info" data-show="default">Trang 5 / 12</span>
+      <span style="margin-left:auto" class="small muted" data-show="default">Đoạn được tô sáng là thông tin dùng trong câu trả lời</span>
+      <div data-show="default" style="display:flex;gap:6px">
+        <button class="btn btn-sm" type="button" aria-label="Trang trước">‹</button>
+        <button class="btn btn-sm" type="button" aria-label="Trang sau">›</button>
+      </div>
+    </div>
+
+    <div id="doc" class="viewer-stage" data-show="default">
+      <article class="page-paper" aria-label="Nội dung trang 5 của HopDong_A.pdf (minh họa)">
+        <h4>Điều 5. Thanh toán</h4>
+        <p>5.1 Bên B thanh toán cho Bên A theo các đợt quy định tại Phụ lục 2 của hợp đồng này.</p>
+        <p><mark class="hit">5.2 [Nội dung minh họa] Đợt một được thanh toán trong thời hạn [số ngày] kể từ ngày ký. Đợt hai được thanh toán sau khi nghiệm thu.</mark></p>
+        <p>5.3 Mọi khoản thanh toán thực hiện bằng hình thức chuyển khoản, theo thông tin tài khoản nêu tại Điều 12.</p>
+        <p>5.4 [Nội dung minh họa] Các bên thống nhất phương thức xử lý khi có chênh lệch số liệu thanh toán.</p>
+        <div class="page-no">— 5 —</div>
+      </article>
+    </div>
+
+    <div class="card-pad" data-show="deleted">
+      <div class="empty">
+        <div class="empty-icon" aria-hidden="true">🗑</div>
+        <h2>Tài liệu này đã bị xóa</h2>
+        <p>Không thể mở trang nguồn vì tài liệu không còn trong tập tài liệu của bạn. Nếu cần, hãy tải lại tài liệu rồi đặt lại câu hỏi.</p>
+        <a class="btn btn-primary" href="S-02-man-hinh-chinh.html">Quay lại hội thoại</a>
+      </div>
+    </div>
+  </section>
+
+  <aside class="card card-pad" aria-labelledby="src-title" style="align-self:start">
+    <h2 id="src-title">Nguồn của câu trả lời</h2>
+    <p class="small muted">Chọn một nguồn để mở đúng trang.</p>
+    <ul style="list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:10px">
+      <li><a class="chip" href="#doc" aria-current="true" style="background:var(--primary);color:#fff;border-color:var(--primary)">📄 HopDong_A.pdf, tr.5</a></li>
+      <li><a class="chip" href="#doc">📄 BaoGia_B.pdf, tr.2</a></li>
+    </ul>
+  </aside>
+</div>
+
+<details class="notes">
+  <summary>Ghi chú thiết kế (không thuộc giao diện)</summary>
+  <ul>
+    <li>Thành phần: C-14 SourceViewer, C-12 SourceChip. Thao tác: IF-06. Story: US-014, US-015 (BR-012, BR-019). Sự kiện: <code>source_opened</code>.</li>
+    <li>Câu hỏi thiết kế DQ-005: hiển thị trong ứng dụng (như mẫu này) hay mở tab mới.</li>
+    <li>Nội dung trang là minh họa, không phải tài liệu thật. Trạng thái "đã bị xóa" xử lý trường hợp IF-06 trả lỗi.</li>
+  </ul>
+</details>
+<script src="demo.js"></script>
+</body>
+</html>

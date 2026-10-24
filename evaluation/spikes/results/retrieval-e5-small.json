@@ -1,0 +1,51 @@
+{
+  "runs": [
+    {
+      "model": "intfloat/multilingual-e5-small",
+      "dimension": 384,
+      "chunk_tokens": 400,
+      "chunks": 49,
+      "questions": 112,
+      "recall@4": 1.0,
+      "recall@8": 1.0,
+      "recall@12": 1.0,
+      "mrr": 0.9866,
+      "ms_per_chunk_cpu": 2497.4,
+      "top1_score_median": 0.9005
+    },
+    {
+      "model": "intfloat/multilingual-e5-small",
+      "dimension": 384,
+      "chunk_tokens": 500,
+      "chunks": 49,
+      "questions": 112,
+      "recall@4": 1.0,
+      "recall@8": 1.0,
+      "recall@12": 1.0,
+      "mrr": 0.9866,
+      "ms_per_chunk_cpu": 2717.8,
+      "top1_score_median": 0.9005
+    },
+    {
+      "model": "intfloat/multilingual-e5-small",
+      "dimension": 384,
+      "chunk_tokens": 600,
+      "chunks": 49,
+      "questions": 112,
+      "recall@4": 1.0,
+      "recall@8": 1.0,
+      "recall@12": 1.0,
+      "mrr": 0.9866,
+      "ms_per_chunk_cpu": 1162.1,
+      "top1_score_median": 0.9005
+    }
+  ],
+  "thresholds": {
+    "intfloat/multilingual-e5-small": {
+      "in_scope_top_score_min": 0.859,
+      "in_scope_top_score_p10": 0.8755,
+      "out_of_scope_top_score_max": 0.884,
+      "out_of_scope_top_score_median": 0.8506
+    }
+  }
+}

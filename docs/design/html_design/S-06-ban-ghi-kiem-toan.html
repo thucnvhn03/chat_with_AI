@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S-06 Bản ghi kiểm toán — Chat với tài liệu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-default="default">
+<a class="skip-link" href="#main">Bỏ qua tới nội dung chính</a>
+
+<div class="demo-bar" role="group" aria-label="Chọn trạng thái xem mẫu (không thuộc sản phẩm)">
+  <strong>Xem mẫu S-06:</strong>
+  <button type="button" data-state-btn="default">Có bản ghi</button>
+  <button type="button" data-state-btn="empty">Không có bản ghi trong khoảng đã chọn</button>
+  <button type="button" data-state-btn="error">Không tải được</button>
+  <a href="index.html">Danh sách màn hình</a>
+  <span id="state-live" aria-live="polite" style="position:absolute;left:-9999px"></span>
+</div>
+
+<header class="app-header">
+  <a class="brand" href="S-05-quan-ly-quyen.html"><span class="brand-mark" aria-hidden="true">C</span> Chat với tài liệu</a>
+  <div class="header-right">
+    <span class="user-chip">Quản trị bảo mật (tên người dùng)</span>
+    <a class="btn btn-sm" href="S-01-dang-nhap.html">Đăng xuất</a>
+  </div>
+</header>
+
+<div class="admin">
+  <nav class="side-nav" aria-label="Khu vực quản trị">
+    <a href="S-05-quan-ly-quyen.html">Quản lý quyền</a>
+    <a href="S-06-ban-ghi-kiem-toan.html" aria-current="page">Bản ghi kiểm toán</a>
+  </nav>
+
+  <main id="main">
+    <div class="page-title">
+      <div>
+        <h1>Bản ghi kiểm toán truy vấn</h1>
+        <p class="muted" style="margin:4px 0 0">Cho biết người dùng nào đã hỏi về tài liệu nào và vào thời điểm nào. Bản ghi được lưu tối thiểu <span class="tbd">OQ-012</span> ngày.</p>
+      </div>
+    </div>
+
+    <div class="banner banner-err" role="alert" data-show="error">
+      <span aria-hidden="true">⚠</span>
+      <div><strong>Không tải được bản ghi kiểm toán.</strong> Hãy thử lại sau ít phút.</div>
+      <div class="banner-actions"><button class="btn btn-sm" type="button">Thử lại</button></div>
+    </div>
+
+    <section class="card" aria-labelledby="res-title">
+      <form class="toolbar" onsubmit="return false">
+        <h2 id="res-title" style="width:100%">Lọc bản ghi</h2>
+        <div class="field"><label for="d1">Từ ngày</label><input id="d1" type="date"></div>
+        <div class="field"><label for="d2">Đến ngày</label><input id="d2" type="date"></div>
+        <div class="field"><label for="usr">Người dùng</label><input id="usr" type="text" placeholder="Tất cả"></div>
+        <div class="field"><label for="doc">Tài liệu</label><input id="doc" type="text" placeholder="Tất cả"></div>
+        <button class="btn btn-primary" type="submit">Lọc</button>
+      </form>
+
+      <div class="table-wrap" data-show="default">
+        <table>
+          <caption style="position:absolute;left:-9999px">Bản ghi truy vấn (dữ liệu minh họa)</caption>
+          <thead><tr><th scope="col">Thời điểm</th><th scope="col">Người dùng</th><th scope="col">Tài liệu liên quan</th></tr></thead>
+          <tbody>
+            <tr><td>[ngày giờ minh họa]</td><td>user01</td><td>HopDong_A.pdf; BaoGia_B.pdf</td></tr>
+            <tr><td>[ngày giờ minh họa]</td><td>user02</td><td>HopDong_A.pdf</td></tr>
+            <tr><td>[ngày giờ minh họa]</td><td>user01</td><td>BaoGia_B.pdf</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="empty" data-show="empty">
+        <div class="empty-icon" aria-hidden="true">🔍</div>
+        <h3>Không có bản ghi trong khoảng đã chọn</h3>
+        <p>Hãy mở rộng khoảng thời gian hoặc bỏ bớt điều kiện lọc.</p>
+      </div>
+    </section>
+    <p class="small muted">Không hiển thị nội dung câu hỏi hay nội dung tài liệu: chỉ hiển thị người dùng, tài liệu liên quan và thời điểm (BR-023, PQ-003).</p>
+  </main>
+</div>
+
+<details class="notes">
+  <summary>Ghi chú thiết kế (không thuộc giao diện)</summary>
+  <ul>
+    <li>Thành phần: C-17 AdminArea, C-19 AuditLogView. Thao tác: IF-09. Story: US-020 (BR-023, AC-023).</li>
+    <li>Chỉ vai trò Quản trị bảo mật truy cập được. Thời gian lưu bản ghi: OQ-012. Việc có hiển thị nội dung câu hỏi hay không: PQ-003 (mẫu này không hiển thị).</li>
+    <li>Dữ liệu trong bảng là minh họa.</li>
+  </ul>
+</details>
+<script src="demo.js"></script>
+</body>
+</html>

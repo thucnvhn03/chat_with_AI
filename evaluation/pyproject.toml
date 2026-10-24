@@ -1,0 +1,18 @@
+# Bộ đánh giá chạy độc lập với backend: chỉ cần Python 3.12 và httpx (khi gọi API thật).
+[project]
+name = "chat-with-docs-evaluation"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["httpx>=0.27"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]

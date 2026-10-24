@@ -1,0 +1,79 @@
+# Luật cảnh báo (US-021, T4-04). Ngưỡng là giá trị TẠM THỜI cho tới khi chốt AQ-005 / OQ-011 / OQ-002;
+# mỗi luật ghi nguồn quyết định trong nhãn `decision`.
+groups:
+  - name: chat-with-docs
+    rules:
+      - alert: BackendDown
+        expr: up{job="backend"} == 0
+        for: 2m
+        labels: { severity: critical, decision: "OQ-011" }
+        annotations:
+          summary: "Backend không phản hồi /metrics quá 2 phút"
+          runbook: "docs/implement/ops_runbook.md#su-co-dich-vu-khong-phan-hoi"
+
+      - alert: WorkerDown
+        expr: up{job="worker"} == 0
+        for: 5m
+        labels: { severity: critical, decision: "OQ-011" }
+        annotations:
+          summary: "Worker không chạy: tài liệu sẽ không được xử lý và không được xóa vĩnh viễn"
+          runbook: "docs/implement/ops_runbook.md#su-co-dich-vu-khong-phan-hoi"
+
+      - alert: QueueBacklog
+        expr: jobs_oldest_queued_age_seconds > 600
+        for: 5m
+        labels: { severity: warning, decision: "AQ-005" }
+        annotations:
+          summary: "Việc chờ lâu nhất trong hàng đợi đã quá 10 phút"
+          runbook: "docs/implement/ops_runbook.md#hang-doi-ton-dong"
+
+      - alert: DocumentsDeletingOverdue
+        expr: documents_deleting_overdue > 0
+        for: 10m
+        labels: { severity: critical, decision: "OQ-012" }
+        annotations:
+          summary: "Có tài liệu ở trạng thái deleting quá PURGE_SLA_HOURS (cam kết xóa vĩnh viễn, US-007)"
+          runbook: "docs/implement/ops_runbook.md#tai-lieu-deleting-qua-han"
+
+      - alert: HighErrorRate
+        expr: |
+          sum(rate(http_requests_total{status=~"5.."}[5m]))
+            / clamp_min(sum(rate(http_requests_total[5m])), 1e-9) > 0.05
+        for: 10m
+        labels: { severity: warning, decision: "OQ-011" }
+        annotations:
+          summary: "Tỷ lệ lỗi 5xx trên 5% trong 10 phút"
+          runbook: "docs/implement/ops_runbook.md#ty-le-loi-cao"
+
+      - alert: AnswerLatencyHigh
+        expr: histogram_quantile(0.9, sum(rate(answer_latency_seconds_bucket[15m])) by (le)) > 30
+        for: 15m
+        labels: { severity: warning, decision: "OQ-002" }
+        annotations:
+          summary: "Phân vị 90 thời gian trả lời trên 30 giây (LG-05)"
+          runbook: "docs/implement/ops_runbook.md#thoi-gian-tra-loi-cao"
+
+      - alert: NotFoundRateHigh
+        expr: |
+          sum(rate(answers_total{outcome="not_found"}[1h]))
+            / clamp_min(sum(rate(answers_total{outcome=~"answered|not_found"}[1h])), 1e-9) > 0.5
+        for: 1h
+        labels: { severity: info, decision: "OQ-002" }
+        annotations:
+          summary: "Hơn một nửa câu hỏi nhận 'không tìm thấy' trong 1 giờ: kiểm tra MIN_RELEVANCE_SCORE / chất lượng nạp"
+          runbook: "docs/implement/ops_runbook.md#ty-le-khong-tim-thay-cao"
+
+      - alert: IngestFailures
+        expr: increase(jobs_processed_total{kind="ingest", outcome="failed"}[1h]) > 5
+        labels: { severity: warning, decision: "AQ-005" }
+        annotations:
+          summary: "Nhiều việc nạp tài liệu thất bại hẳn (hết lượt thử) trong 1 giờ"
+          runbook: "docs/implement/ops_runbook.md#viec-failed"
+
+      - alert: ComponentUnavailable
+        expr: component_up == 0
+        for: 2m
+        labels: { severity: critical, decision: "OQ-011" }
+        annotations:
+          summary: "Thành phần {{ $labels.component }} không đạt kiểm tra /health/ready"
+          runbook: "docs/implement/ops_runbook.md#su-co-dich-vu-khong-phan-hoi"

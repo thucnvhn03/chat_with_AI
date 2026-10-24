@@ -1,0 +1,21 @@
+[importlinter]
+root_package = app
+
+# Quy tắc phụ thuộc theo SADD mục 3.1: mô-đun nghiệp vụ chỉ phụ thuộc vào cổng (ports),
+# không phụ thuộc trực tiếp vào adapter cụ thể.
+
+[importlinter:contract:modules-no-adapters]
+name = Mô-đun nghiệp vụ không import adapters
+type = forbidden
+source_modules =
+    app.modules
+forbidden_modules =
+    app.adapters
+
+[importlinter:contract:api-no-adapters]
+name = Lớp API không import trực tiếp adapters
+type = forbidden
+source_modules =
+    app.api
+forbidden_modules =
+    app.adapters

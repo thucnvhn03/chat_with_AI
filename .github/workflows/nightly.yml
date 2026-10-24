@@ -1,0 +1,75 @@
+# Kiểm thử đầu-cuối hằng đêm (implement_plan.md mục 9.1, 10.4 bước 5) và bộ đánh giá chất lượng khi có
+# thay đổi ở mô-đun hỏi đáp/truy xuất/nạp hoặc cấu hình mô hình.
+name: Nightly
+
+on:
+  schedule:
+    - cron: "0 19 * * *" # 02:00 giờ Việt Nam
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - backend/app/modules/qa/**
+      - backend/app/modules/retrieval/**
+      - backend/app/modules/ingestion/**
+      - backend/app/adapters/claude_llm.py
+      - backend/app/adapters/local_embedding.py
+      - evaluation/**
+
+jobs:
+  e2e:
+    name: E2E (Playwright, adapter AI giả lập)
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Dựng hệ thống E2E
+        run: docker compose -f deploy/docker-compose.yml -f deploy/docker-compose.e2e.yml up -d --build --wait
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: cd e2e && npm ci --no-audit --no-fund && npx playwright install --with-deps chromium
+      - run: cd e2e && npx playwright test
+        env:
+          E2E_BASE_URL: http://localhost:5173
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: e2e/playwright-report
+      - if: always()
+        run: docker compose -f deploy/docker-compose.yml -f deploy/docker-compose.e2e.yml logs --no-color > compose.log
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: compose-log
+          path: compose.log
+
+  evaluation:
+    name: Bộ đánh giá chất lượng (adapter AI thật)
+    runs-on: ubuntu-latest
+    # Chỉ chạy khi kho có khóa API (môi trường kiểm thử); mỗi lần chạy tốn phí gọi dịch vụ AI (RSK-005)
+    if: ${{ vars.RUN_EVALUATION == 'true' }}
+    environment: evaluation
+    steps:
+      - uses: actions/checkout@v4
+      - name: Dựng hệ thống với Claude API và embedding thật
+        # deploy/.env ghi đè deploy/env.example (tệp này không được commit)
+        run: |
+          echo "ANSWER_PROVIDER=claude" > deploy/.env
+          echo "ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY" >> deploy/.env
+          docker compose -f deploy/docker-compose.yml up -d --build --wait
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install httpx
+      - run: python evaluation/run_eval.py --dataset evaluation/datasets/v1.jsonl --api http://localhost:8000 --out evaluation/reports
+        env:
+          EVAL_LOGIN: ${{ secrets.EVAL_LOGIN }}
+          EVAL_PASSWORD: ${{ secrets.EVAL_PASSWORD }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: evaluation-report
+          path: evaluation/reports

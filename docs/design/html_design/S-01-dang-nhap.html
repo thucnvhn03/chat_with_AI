@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S-01 Đăng nhập — Chat với tài liệu</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-default="default">
+<a class="skip-link" href="#main">Bỏ qua tới nội dung chính</a>
+
+<div class="demo-bar" role="group" aria-label="Chọn trạng thái xem mẫu (không thuộc sản phẩm)">
+  <strong>Xem mẫu S-01:</strong>
+  <button type="button" data-state-btn="default">Mặc định</button>
+  <button type="button" data-state-btn="wrong">Sai thông tin</button>
+  <button type="button" data-state-btn="noaccess">Không có quyền</button>
+  <button type="button" data-state-btn="expired">Hết phiên</button>
+  <a href="index.html">Danh sách màn hình</a>
+  <span id="state-live" class="sr-only" aria-live="polite" style="position:absolute;left:-9999px"></span>
+</div>
+
+<main id="main" class="login-wrap">
+  <div class="card login-card">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">C</span> Chat với tài liệu</div>
+    <h1>Đăng nhập</h1>
+    <p class="muted">Dùng tài khoản được cấp để hỏi đáp trên tài liệu PDF của bạn.</p>
+
+    <div class="banner banner-warn" role="alert" data-show="expired">
+      <span aria-hidden="true">⏱</span>
+      <div><strong>Phiên làm việc đã hết hạn.</strong> Hãy đăng nhập lại. Câu hỏi bạn đang soạn sẽ được giữ lại nếu có thể.</div>
+    </div>
+    <div class="banner banner-err" role="alert" data-show="wrong">
+      <span aria-hidden="true">⚠</span>
+      <div><strong>Tên đăng nhập hoặc mật khẩu chưa đúng.</strong> Hãy kiểm tra lại và thử một lần nữa.</div>
+    </div>
+    <div class="banner banner-err" role="alert" data-show="noaccess">
+      <span aria-hidden="true">⛔</span>
+      <div><strong>Tài khoản này chưa được cấp quyền sử dụng ứng dụng.</strong> Hãy liên hệ quản trị bảo mật để được cấp quyền.</div>
+    </div>
+
+    <form onsubmit="return false" novalidate>
+      <div class="field">
+        <label for="user">Tên đăng nhập</label>
+        <input id="user" type="text" autocomplete="username" placeholder="ví dụ: ten.ho@congty.vn">
+      </div>
+      <div class="field">
+        <label for="pw">Mật khẩu</label>
+        <input id="pw" type="password" autocomplete="current-password">
+      </div>
+      <button class="btn btn-primary" style="width:100%" type="submit">Đăng nhập</button>
+    </form>
+    <p class="small muted" style="margin-top:16px">Phương thức đăng nhập thực tế <span class="tbd">chưa chốt: DQ-003</span></p>
+    <p class="small"><a href="S-02-man-hinh-chinh.html">Mở màn hình chính (xem mẫu)</a></p>
+  </div>
+</main>
+
+<details class="notes">
+  <summary>Ghi chú thiết kế (không thuộc giao diện)</summary>
+  <ul>
+    <li>Thành phần: C-01 AuthGate, C-16 ErrorBanner. Thao tác: IF-01. Story: US-017 (BR-014).</li>
+    <li>Sau khi đăng nhập, điều hướng theo vai trò: BD → S-02; Quản trị bảo mật → S-05; Quản lý → S-07. Người dùng nhiều vai trò: DQ-002.</li>
+    <li>Thông báo "không có quyền" không tiết lộ tài liệu nào (CN-06). Lỗi được hiển thị tại chỗ, có vai trò <code>alert</code> cho trình đọc màn hình.</li>
+  </ul>
+</details>
+<script src="demo.js"></script>
+</body>
+</html>
