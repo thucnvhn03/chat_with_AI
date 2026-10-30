@@ -1,0 +1,218 @@
+<testsuites id="" name="" tests="20" failures="0" skipped="0" errors="0" time="158.89251000000002">
+<testsuite name="a11y.spec.ts" timestamp="2026-10-28T15:15:13.201Z" hostname="chromium" tests="6" failures="0" skipped="0" time="33.805" errors="0">
+<testcase name="S-01 Đăng nhập" classname="a11y.spec.ts" time="3.993">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\a11y-S-01-Đăng-nhập-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="S-05 và S-06 (quản trị bảo mật)" classname="a11y.spec.ts" time="9.85">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\a11y-S-05-và-S-06-quản-trị-bảo-mật--chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="S-07 Báo cáo mức sử dụng" classname="a11y.spec.ts" time="6.574">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\a11y-S-07-Báo-cáo-mức-sử-dụng-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="S-04 hộp thoại xóa" classname="a11y.spec.ts" time="6.857">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\a11y-S-04-hộp-thoại-xóa-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="chỉ dùng bàn phím: liên kết bỏ qua và đăng nhập" classname="a11y.spec.ts" time="3.252">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\a11y-chỉ-dùng-bàn-phím-liên-kết-bỏ-qua-và-đăng-nhập-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="thu phóng 200%: màn hình chính không mất chức năng" classname="a11y.spec.ts" time="3.279">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\a11y-thu-phóng-200-màn-hình-chính-không-mất-chức-năng-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="auth.spec.ts" timestamp="2026-10-28T15:15:13.201Z" hostname="chromium" tests="4" failures="0" skipped="0" time="24.501" errors="0">
+<testcase name="đăng nhập đúng: BD vào màn hình chính" classname="auth.spec.ts" time="5.355">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\auth-đăng-nhập-đúng-BD-vào-màn-hình-chính-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="đăng nhập sai: thông báo chung, axe không vi phạm nghiêm trọng" classname="auth.spec.ts" time="4.571">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\auth-đăng-nhập-sai-thông-b-b38c5--không-vi-phạm-nghiêm-trọng-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="không có quyền: tài khoản bị thu hồi nhận trạng thái &quot;không có quyền&quot;" classname="auth.spec.ts" time="8.369">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\auth-không-có-quyền-tài-kh-4b7f0--trạng-thái-không-có-quyền--chromium\test-finished-2.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\auth-không-có-quyền-tài-kh-4b7f0--trạng-thái-không-có-quyền--chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="hết phiên: yêu cầu kế tiếp đưa về S-01 với thông báo hết phiên, giữ câu hỏi đang soạn" classname="auth.spec.ts" time="6.206">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\auth-hết-phiên-yêu-cầu-kế--23e71-phiên-giữ-câu-hỏi-đang-soạn-chromium\test-finished-2.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\auth-hết-phiên-yêu-cầu-kế--23e71-phiên-giữ-câu-hỏi-đang-soạn-chromium\test-finished-1.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\auth-hết-phiên-yêu-cầu-kế--23e71-phiên-giữ-câu-hỏi-đang-soạn-chromium\test-finished-3.png]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="delete-audit.spec.ts" timestamp="2026-10-28T15:15:13.201Z" hostname="chromium" tests="2" failures="0" skipped="0" time="21.242" errors="0">
+<testcase name="xóa tài liệu: hộp thoại xác nhận, biến khỏi danh sách, không còn được dùng để trả lời" classname="delete-audit.spec.ts" time="8.835">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\delete-audit-xóa-tài-liệu--2ad13-ng-còn-được-dùng-để-trả-lời-chromium\test-finished-2.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\delete-audit-xóa-tài-liệu--2ad13-ng-còn-được-dùng-để-trả-lời-chromium\test-finished-3.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\delete-audit-xóa-tài-liệu--2ad13-ng-còn-được-dùng-để-trả-lời-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="quản trị bảo mật: cấp, thu hồi quyền và xem bản ghi kiểm toán" classname="delete-audit.spec.ts" time="12.407">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\delete-audit-quản-trị-bảo--aa3e3-ền-và-xem-bản-ghi-kiểm-toán-chromium\test-finished-2.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\delete-audit-quản-trị-bảo--aa3e3-ền-và-xem-bản-ghi-kiểm-toán-chromium\test-finished-1.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\delete-audit-quản-trị-bảo--aa3e3-ền-và-xem-bản-ghi-kiểm-toán-chromium\test-finished-3.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\delete-audit-quản-trị-bảo--aa3e3-ền-và-xem-bản-ghi-kiểm-toán-chromium\test-finished-4.png]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="documents.spec.ts" timestamp="2026-10-28T15:15:13.201Z" hostname="chromium" tests="5" failures="0" skipped="0" time="32.811" errors="0">
+<testcase name="trạng thái trống khi chưa có tài liệu" classname="documents.spec.ts" time="5.081">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\documents-trạng-thái-trống-khi-chưa-có-tài-liệu-chromium\test-finished-2.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\documents-trạng-thái-trống-khi-chưa-có-tài-liệu-chromium\test-finished-4.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\documents-trạng-thái-trống-khi-chưa-có-tài-liệu-chromium\test-finished-3.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\documents-trạng-thái-trống-khi-chưa-có-tài-liệu-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="tải PDF hợp lệ: Đang xử lý rồi Sẵn sàng, hỏi được (AC-001)" classname="documents.spec.ts" time="9.256">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\documents-tải-PDF-hợp-lệ-Đ-0e212-i-Sẵn-sàng-hỏi-được-AC-001--chromium\test-finished-4.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\documents-tải-PDF-hợp-lệ-Đ-0e212-i-Sẵn-sàng-hỏi-được-AC-001--chromium\test-finished-2.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\documents-tải-PDF-hợp-lệ-Đ-0e212-i-Sẵn-sàng-hỏi-được-AC-001--chromium\test-finished-3.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\documents-tải-PDF-hợp-lệ-Đ-0e212-i-Sẵn-sàng-hỏi-được-AC-001--chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="tải tệp hỏng: nhãn Lỗi cùng lý do, có Thử lại và Xóa (AC-003, AC-018)" classname="documents.spec.ts" time="6.254">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\documents-tải-tệp-hỏng-nhã-da885-ử-lại-và-Xóa-AC-003-AC-018--chromium\test-finished-3.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\documents-tải-tệp-hỏng-nhã-da885-ử-lại-và-Xóa-AC-003-AC-018--chromium\test-finished-2.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\documents-tải-tệp-hỏng-nhã-da885-ử-lại-và-Xóa-AC-003-AC-018--chromium\test-finished-4.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\documents-tải-tệp-hỏng-nhã-da885-ử-lại-và-Xóa-AC-003-AC-018--chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="tệp không phải PDF bị từ chối ngay với lý do" classname="documents.spec.ts" time="5.002">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\documents-tệp-không-phải-PDF-bị-từ-chối-ngay-với-lý-do-chromium\test-finished-2.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\documents-tệp-không-phải-PDF-bị-từ-chối-ngay-với-lý-do-chromium\test-finished-4.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\documents-tệp-không-phải-PDF-bị-từ-chối-ngay-với-lý-do-chromium\test-finished-3.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\documents-tệp-không-phải-PDF-bị-từ-chối-ngay-với-lý-do-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="mất mạng giữa chừng khi tải lên: &quot;Chưa tải xong&quot;, không bao giờ &quot;Sẵn sàng&quot;" classname="documents.spec.ts" time="7.218">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\documents-mất-mạng-giữa-ch-97f0d-ong-không-bao-giờ-Sẵn-sàng--chromium\test-finished-2.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\documents-mất-mạng-giữa-ch-97f0d-ong-không-bao-giờ-Sẵn-sàng--chromium\test-finished-3.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\documents-mất-mạng-giữa-ch-97f0d-ong-không-bao-giờ-Sẵn-sàng--chromium\test-finished-4.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\documents-mất-mạng-giữa-ch-97f0d-ong-không-bao-giờ-Sẵn-sàng--chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="qa.spec.ts" timestamp="2026-10-28T15:15:13.201Z" hostname="chromium" tests="2" failures="0" skipped="0" time="24.305" errors="0">
+<testcase name="hỏi đáp có nguồn và trình xem nguồn" classname="qa.spec.ts" time="16.649">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\qa-hỏi-đáp-có-nguồn-và-trình-xem-nguồn-chromium\test-finished-2.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\qa-hỏi-đáp-có-nguồn-và-trình-xem-nguồn-chromium\test-finished-1.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\qa-hỏi-đáp-có-nguồn-và-trình-xem-nguồn-chromium\test-finished-3.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\qa-hỏi-đáp-có-nguồn-và-trình-xem-nguồn-chromium\test-finished-4.png]]
+]]>
+</system-out>
+</testcase>
+<testcase name="mất mạng khi hỏi: giữ câu hỏi, &quot;Gửi lại&quot; được sau khi có mạng" classname="qa.spec.ts" time="7.656">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\qa-mất-mạng-khi-hỏi-giữ-câu-hỏi-Gửi-lại-được-sau-khi-có-mạng-chromium\test-finished-2.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\qa-mất-mạng-khi-hỏi-giữ-câu-hỏi-Gửi-lại-được-sau-khi-có-mạng-chromium\test-finished-3.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\qa-mất-mạng-khi-hỏi-giữ-câu-hỏi-Gửi-lại-được-sau-khi-có-mạng-chromium\test-finished-4.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\qa-mất-mạng-khi-hỏi-giữ-câu-hỏi-Gửi-lại-được-sau-khi-có-mạng-chromium\test-finished-1.png]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="screenshots.spec.ts" timestamp="2026-10-28T15:15:13.201Z" hostname="chromium" tests="1" failures="0" skipped="0" time="15.715" errors="0">
+<testcase name="ảnh màn hình S-01..S-07" classname="screenshots.spec.ts" time="15.715">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\..\e2e\test-results\screenshots-ảnh-màn-hình-S-01-S-07-chromium\test-finished-2.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\screenshots-ảnh-màn-hình-S-01-S-07-chromium\test-finished-1.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\screenshots-ảnh-màn-hình-S-01-S-07-chromium\test-finished-3.png]]
+
+[[ATTACHMENT|..\..\e2e\test-results\screenshots-ảnh-màn-hình-S-01-S-07-chromium\test-finished-4.png]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

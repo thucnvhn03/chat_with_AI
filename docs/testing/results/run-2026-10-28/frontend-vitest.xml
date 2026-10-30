@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="79" failures="0" errors="0" time="41.1120553">
+    <testsuite name="src/components/components.test.tsx" timestamp="2026-10-28T14:52:55.304Z" hostname="DESKTOP-H1KDR35" tests="8" failures="0" errors="0" skipped="0" time="1.2251817">
+        <testcase classname="src/components/components.test.tsx" name="ErrorBanner (C-16) &gt; có vai trò alert, tiêu đề và hành động" time="0.4294445">
+            <system-err>
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+            </system-err>
+        </testcase>
+        <testcase classname="src/components/components.test.tsx" name="ErrorBanner (C-16) &gt; dạng thông tin dùng vai trò note" time="0.0331926">
+        </testcase>
+        <testcase classname="src/components/components.test.tsx" name="EmptyState (C-10) &gt; hiển thị tiêu đề và hướng dẫn, biểu tượng ẩn với trình đọc màn hình" time="0.0637444">
+        </testcase>
+        <testcase classname="src/components/components.test.tsx" name="StatusBadge (C-06) &gt; ready luôn có chữ &quot;Sẵn sàng&quot;, không chỉ dùng màu" time="0.022323">
+        </testcase>
+        <testcase classname="src/components/components.test.tsx" name="StatusBadge (C-06) &gt; processing luôn có chữ &quot;Đang xử lý&quot;, không chỉ dùng màu" time="0.0168569">
+        </testcase>
+        <testcase classname="src/components/components.test.tsx" name="StatusBadge (C-06) &gt; failed luôn có chữ &quot;Lỗi&quot;, không chỉ dùng màu" time="0.0104845">
+        </testcase>
+        <testcase classname="src/components/components.test.tsx" name="StatusBadge (C-06) &gt; incomplete luôn có chữ &quot;Chưa tải xong&quot;, không chỉ dùng màu" time="0.0079946">
+        </testcase>
+        <testcase classname="src/components/components.test.tsx" name="AppShell (C-00) &gt; có liên kết bỏ qua, tên người dùng, không có vi phạm axe nghiêm trọng" time="0.6326427">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/features/admin/admin.test.tsx" timestamp="2026-10-28T14:52:55.316Z" hostname="DESKTOP-H1KDR35" tests="8" failures="0" errors="0" skipped="0" time="6.9344359">
+        <testcase classname="src/features/admin/admin.test.tsx" name="S-05 Quản lý quyền &gt; s05-default: bảng người dùng, cột phạm vi [OQ-003], không vi phạm axe" time="3.1209401">
+            <system-err>
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+            </system-err>
+        </testcase>
+        <testcase classname="src/features/admin/admin.test.tsx" name="S-05 Quản lý quyền &gt; s05-empty: trạng thái trống" time="0.2493519">
+        </testcase>
+        <testcase classname="src/features/admin/admin.test.tsx" name="S-05 Quản lý quyền &gt; cấp quyền gọi API với tên đăng nhập và vai trò" time="0.843948">
+        </testcase>
+        <testcase classname="src/features/admin/admin.test.tsx" name="S-05 Quản lý quyền &gt; bỏ trống tên đăng nhập: báo lỗi tại trường, không gọi API" time="0.2808101">
+        </testcase>
+        <testcase classname="src/features/admin/admin.test.tsx" name="S-05 Quản lý quyền &gt; s05-confirm: thu hồi phải qua bước xác nhận" time="0.7591738">
+        </testcase>
+        <testcase classname="src/features/admin/admin.test.tsx" name="S-06 Bản ghi kiểm toán &gt; s06-default: bảng thời điểm, người dùng, tài liệu; xem thêm theo con trỏ; không vi phạm axe" time="0.7518881">
+        </testcase>
+        <testcase classname="src/features/admin/admin.test.tsx" name="S-06 Bản ghi kiểm toán &gt; bộ lọc gửi đúng tham số" time="0.7068332">
+        </testcase>
+        <testcase classname="src/features/admin/admin.test.tsx" name="S-06 Bản ghi kiểm toán &gt; s06-empty và s06-error (có Thử lại)" time="0.2146974">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/features/auth/LoginPage.test.tsx" timestamp="2026-10-28T14:52:55.325Z" hostname="DESKTOP-H1KDR35" tests="10" failures="0" errors="0" skipped="0" time="5.6839699">
+        <testcase classname="src/features/auth/LoginPage.test.tsx" name="S-01 Đăng nhập &gt; mặc định: biểu mẫu, không có thông báo lỗi, không vi phạm axe" time="1.0350088">
+            <system-err>
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+            </system-err>
+        </testcase>
+        <testcase classname="src/features/auth/LoginPage.test.tsx" name="S-01 Đăng nhập &gt; sai thông tin: thông báo chung, không phân biệt sai tên hay sai mật khẩu" time="0.8024854">
+        </testcase>
+        <testcase classname="src/features/auth/LoginPage.test.tsx" name="S-01 Đăng nhập &gt; không có quyền (403 no_access)" time="0.6189955">
+        </testcase>
+        <testcase classname="src/features/auth/LoginPage.test.tsx" name="S-01 Đăng nhập &gt; hết phiên: thông báo khi bị đưa về từ một yêu cầu 401" time="0.0393759">
+        </testcase>
+        <testcase classname="src/features/auth/LoginPage.test.tsx" name="S-01 Đăng nhập &gt; đăng nhập vai trò bd đưa tới đúng màn hình" time="0.7585046">
+        </testcase>
+        <testcase classname="src/features/auth/LoginPage.test.tsx" name="S-01 Đăng nhập &gt; đăng nhập vai trò security_admin đưa tới đúng màn hình" time="0.7398589">
+        </testcase>
+        <testcase classname="src/features/auth/LoginPage.test.tsx" name="S-01 Đăng nhập &gt; đăng nhập vai trò manager đưa tới đúng màn hình" time="0.6978178">
+        </testcase>
+        <testcase classname="src/features/auth/LoginPage.test.tsx" name="AuthGate (C-01) &gt; chưa đăng nhập → về /login" time="0.066119">
+        </testcase>
+        <testcase classname="src/features/auth/LoginPage.test.tsx" name="AuthGate (C-01) &gt; 401 giữa phiên → về /login với thông báo hết phiên, câu hỏi đang soạn vẫn được giữ" time="0.8034349">
+        </testcase>
+        <testcase classname="src/features/auth/LoginPage.test.tsx" name="AuthGate (C-01) &gt; sai vai trò → về trang chủ của vai trò" time="0.1132341">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/features/chat/chat.test.tsx" timestamp="2026-10-28T14:52:55.339Z" hostname="DESKTOP-H1KDR35" tests="13" failures="0" errors="0" skipped="0" time="14.1942618">
+        <testcase classname="src/features/chat/chat.test.tsx" name="Hỏi đáp &gt; câu trả lời có nguồn: chip &quot;tên, tr.N&quot;, tiêu điểm quay về ô nhập, không vi phạm axe" time="3.146173">
+            <system-err>
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+            </system-err>
+        </testcase>
+        <testcase classname="src/features/chat/chat.test.tsx" name="Hỏi đáp &gt; không tìm thấy: khối cảnh báo kèm gợi ý, không có chip nguồn" time="1.106982">
+        </testcase>
+        <testcase classname="src/features/chat/chat.test.tsx" name="Hỏi đáp &gt; nội dung có &lt;script&gt; hiển thị nguyên văn, không thực thi" time="0.5885894">
+        </testcase>
+        <testcase classname="src/features/chat/chat.test.tsx" name="Hỏi đáp &gt; chỉ báo &quot;Đang xử lý câu hỏi…&quot; xuất hiện ngay khi gửi; Hủy trả câu hỏi về ô nhập" time="0.85689">
+        </testcase>
+        <testcase classname="src/features/chat/chat.test.tsx" name="Hỏi đáp &gt; gửi bằng Ctrl+Enter" time="0.4824649">
+        </testcase>
+        <testcase classname="src/features/chat/chat.test.tsx" name="Hỏi đáp &gt; câu hỏi quá dài: báo số ký tự và không cho gửi" time="1.1078203">
+        </testcase>
+        <testcase classname="src/features/chat/chat.test.tsx" name="Hỏi đáp &gt; chưa có tài liệu sẵn sàng: ô nhập vô hiệu kèm giải thích" time="0.0567497">
+        </testcase>
+        <testcase classname="src/features/chat/chat.test.tsx" name="Lỗi khi hỏi (s02-offline-ask) &gt; mất mạng: giữ câu hỏi, nút &quot;Gửi lại&quot;, không có câu trả lời dở dang; gửi lại được" time="1.3171416">
+        </testcase>
+        <testcase classname="src/features/chat/chat.test.tsx" name="Lỗi khi hỏi (s02-offline-ask) &gt; 504: thông báo quá thời gian kèm &quot;Thử lại&quot;" time="0.729628">
+        </testcase>
+        <testcase classname="src/features/chat/chat.test.tsx" name="Lỗi khi hỏi (s02-offline-ask) &gt; 502: thông báo chung từ máy chủ" time="0.446629">
+        </testcase>
+        <testcase classname="src/features/chat/chat.test.tsx" name="Nguồn, đánh giá, lịch sử &gt; chọn chip phát source_opened chỉ với id tài liệu và số trang" time="0.8443605">
+        </testcase>
+        <testcase classname="src/features/chat/chat.test.tsx" name="Nguồn, đánh giá, lịch sử &gt; đánh giá: aria-pressed, đổi lại được" time="1.7465459">
+        </testcase>
+        <testcase classname="src/features/chat/chat.test.tsx" name="Nguồn, đánh giá, lịch sử &gt; khôi phục lịch sử trong phiên; &quot;Hội thoại mới&quot; xóa ngữ cảnh" time="1.7537286">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/features/documents/documents.test.tsx" timestamp="2026-10-28T14:52:55.355Z" hostname="DESKTOP-H1KDR35" tests="14" failures="0" errors="0" skipped="0" time="7.1556555">
+        <testcase classname="src/features/documents/documents.test.tsx" name="S-02 vùng tài liệu &gt; trạng thái mặc định khớp s02-default: tên, số trang, dung lượng, nhãn, lý do lỗi" time="1.7895794">
+            <system-err>
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+            </system-err>
+        </testcase>
+        <testcase classname="src/features/documents/documents.test.tsx" name="S-02 vùng tài liệu &gt; trạng thái trống khớp s02-empty: hướng dẫn tải PDF, ô hỏi bị vô hiệu kèm giải thích" time="0.1970028">
+        </testcase>
+        <testcase classname="src/features/documents/documents.test.tsx" name="S-02 vùng tài liệu &gt; lỗi tải danh sách có nút Thử lại" time="0.152865">
+        </testcase>
+        <testcase classname="src/features/documents/documents.test.tsx" name="S-02 vùng tài liệu &gt; chỉ hỏi định kỳ khi còn tài liệu đang xử lý" time="0.0017748">
+        </testcase>
+        <testcase classname="src/features/documents/documents.test.tsx" name="S-02 vùng tài liệu &gt; hỏi lại trạng thái tới khi hết tài liệu đang xử lý rồi dừng" time="0.5574061">
+        </testcase>
+        <testcase classname="src/features/documents/documents.test.tsx" name="S-02 vùng tài liệu &gt; danh sách 200 tài liệu dựng nhanh" time="1.7844902">
+        </testcase>
+        <testcase classname="src/features/documents/documents.test.tsx" name="S-02 vùng tài liệu &gt; Thử lại gọi API retry" time="0.3792126">
+        </testcase>
+        <testcase classname="src/features/documents/documents.test.tsx" name="UploadControl (C-03) &gt; nhiều tệp: tiến độ và kết quả riêng từng tệp; kiểm tra sớm đuôi và dung lượng" time="0.3238836">
+        </testcase>
+        <testcase classname="src/features/documents/documents.test.tsx" name="UploadControl (C-03) &gt; mất mạng giữa chừng: &quot;Chưa tải xong&quot;, không bao giờ &quot;Sẵn sàng&quot;; Tải lại gửi lại tệp" time="0.1863535">
+        </testcase>
+        <testcase classname="src/features/documents/documents.test.tsx" name="UploadControl (C-03) &gt; không khóa vùng hội thoại khi đang tải" time="0.0982635">
+        </testcase>
+        <testcase classname="src/features/documents/documents.test.tsx" name="DeleteConfirmDialog (C-05, S-04) &gt; khớp s04-default: tên tài liệu, thời hạn xóa, không thể hoàn tác, tiêu điểm ở Hủy" time="0.4309703">
+        </testcase>
+        <testcase classname="src/features/documents/documents.test.tsx" name="DeleteConfirmDialog (C-05, S-04) &gt; Esc đóng hộp thoại và trả tiêu điểm về nút gọi" time="0.3699935">
+        </testcase>
+        <testcase classname="src/features/documents/documents.test.tsx" name="DeleteConfirmDialog (C-05, S-04) &gt; xóa thất bại hiển thị lỗi trong hộp thoại (s04-failed)" time="0.4690812">
+        </testcase>
+        <testcase classname="src/features/documents/documents.test.tsx" name="DeleteConfirmDialog (C-05, S-04) &gt; xóa thành công: tài liệu biến khỏi danh sách ngay" time="0.4070191">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/features/documents/failureMessages.test.ts" timestamp="2026-10-28T14:52:55.367Z" hostname="DESKTOP-H1KDR35" tests="16" failures="0" errors="0" skipped="0" time="0.0336883">
+        <testcase classname="src/features/documents/failureMessages.test.ts" name="failureMessage &gt; có câu cho mọi mã bắt buộc" time="0.0108161">
+        </testcase>
+        <testcase classname="src/features/documents/failureMessages.test.ts" name="failureMessage &gt; corrupted → một câu tiếng Việt không rỗng, khác câu chung, không chứa mã" time="0.0042443">
+        </testcase>
+        <testcase classname="src/features/documents/failureMessages.test.ts" name="failureMessage &gt; encrypted → một câu tiếng Việt không rỗng, khác câu chung, không chứa mã" time="0.0018051">
+        </testcase>
+        <testcase classname="src/features/documents/failureMessages.test.ts" name="failureMessage &gt; not_pdf → một câu tiếng Việt không rỗng, khác câu chung, không chứa mã" time="0.0011756">
+        </testcase>
+        <testcase classname="src/features/documents/failureMessages.test.ts" name="failureMessage &gt; too_large → một câu tiếng Việt không rỗng, khác câu chung, không chứa mã" time="0.0012396">
+        </testcase>
+        <testcase classname="src/features/documents/failureMessages.test.ts" name="failureMessage &gt; no_text → một câu tiếng Việt không rỗng, khác câu chung, không chứa mã" time="0.0013106">
+        </testcase>
+        <testcase classname="src/features/documents/failureMessages.test.ts" name="failureMessage &gt; network → một câu tiếng Việt không rỗng, khác câu chung, không chứa mã" time="0.0010747">
+        </testcase>
+        <testcase classname="src/features/documents/failureMessages.test.ts" name="failureMessage &gt; internal → một câu tiếng Việt không rỗng, khác câu chung, không chứa mã" time="0.0010594">
+        </testcase>
+        <testcase classname="src/features/documents/failureMessages.test.ts" name="failureMessage &gt; câu mẫu cho tài liệu mã hóa" time="0.0008247">
+        </testcase>
+        <testcase classname="src/features/documents/failureMessages.test.ts" name="failureMessage &gt; các mã khác nhau cho câu khác nhau" time="0.0009165">
+        </testcase>
+        <testcase classname="src/features/documents/failureMessages.test.ts" name="failureMessage &gt; mã lạ virus_detected → câu chung" time="0.0006448">
+        </testcase>
+        <testcase classname="src/features/documents/failureMessages.test.ts" name="failureMessage &gt; mã lạ  → câu chung" time="0.0004841">
+        </testcase>
+        <testcase classname="src/features/documents/failureMessages.test.ts" name="failureMessage &gt; mã lạ null → câu chung" time="0.0004404">
+        </testcase>
+        <testcase classname="src/features/documents/failureMessages.test.ts" name="failureMessage &gt; mã lạ undefined → câu chung" time="0.0004003">
+        </testcase>
+        <testcase classname="src/features/documents/failureMessages.test.ts" name="failureMessage &gt; mã lạ __proto__ → câu chung" time="0.0004639">
+        </testcase>
+        <testcase classname="src/features/documents/failureMessages.test.ts" name="failureMessage &gt; mã lạ toString → câu chung" time="0.0004672">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/features/reports/reports.test.tsx" timestamp="2026-10-28T14:52:55.381Z" hostname="DESKTOP-H1KDR35" tests="4" failures="0" errors="0" skipped="0" time="3.002347">
+        <testcase classname="src/features/reports/reports.test.tsx" name="S-07 Báo cáo mức sử dụng &gt; s07-default: thẻ số liệu tuần gần nhất, biểu đồ có chú giải và bảng số liệu" time="2.2174221">
+            <system-err>
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+            </system-err>
+        </testcase>
+        <testcase classname="src/features/reports/reports.test.tsx" name="S-07 Báo cáo mức sử dụng &gt; đổi khoảng thời gian gọi lại API" time="0.4790733">
+        </testcase>
+        <testcase classname="src/features/reports/reports.test.tsx" name="S-07 Báo cáo mức sử dụng &gt; s07-empty" time="0.1705304">
+        </testcase>
+        <testcase classname="src/features/reports/reports.test.tsx" name="S-07 Báo cáo mức sử dụng &gt; s07-error có Thử lại" time="0.1291632">
+        </testcase>
+    </testsuite>
+    <testsuite name="src/features/sources/sources.test.tsx" timestamp="2026-10-28T14:52:55.386Z" hostname="DESKTOP-H1KDR35" tests="6" failures="0" errors="0" skipped="0" time="2.8825152">
+        <testcase classname="src/features/sources/sources.test.tsx" name="findHighlight &gt; khớp linh hoạt khoảng trắng và ngắt dòng" time="0.0087253">
+        </testcase>
+        <testcase classname="src/features/sources/sources.test.tsx" name="findHighlight &gt; không tìm thấy hoặc rỗng → không tô sáng" time="0.0024999">
+        </testcase>
+        <testcase classname="src/features/sources/sources.test.tsx" name="S-03 Trình xem nguồn &gt; s03-default: &quot;Trang N / M&quot;, tô sáng đoạn trích, cột nguồn, không vi phạm axe" time="1.6019323">
+            <system-err>
+⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+
+            </system-err>
+        </testcase>
+        <testcase classname="src/features/sources/sources.test.tsx" name="S-03 Trình xem nguồn &gt; đoạn trích không có trong trang: hiển thị trang, không tô sáng, không báo lỗi" time="0.1312811">
+        </testcase>
+        <testcase classname="src/features/sources/sources.test.tsx" name="S-03 Trình xem nguồn &gt; chuyển trang không tải lại toàn bộ ứng dụng" time="0.8737083">
+        </testcase>
+        <testcase classname="src/features/sources/sources.test.tsx" name="S-03 Trình xem nguồn &gt; s03-deleted: tài liệu đã bị xóa khi API trả 404" time="0.2573824">
+        </testcase>
+    </testsuite>
+</testsuites>
