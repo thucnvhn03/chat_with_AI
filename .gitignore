@@ -33,3 +33,7 @@ e2e/playwright-report/
 
 # Bộ nhớ đệm mô hình embedding cho spike (nằm trên ổ D:, không commit)
 .cache/
+
+# Kết quả kiểm thử dạng JUnit (skill test-report đọc; báo cáo tổng kết mới là bằng chứng lưu lại)
+test-results/
+backend/test-results/
