@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "chat-with-docs": {
+      "command": "node",
+      "args": ["mcp/dist/index.js"],
+      "env": {
+        "CWD_API_URL": "${CWD_API_URL:-http://localhost:8000/api/v1}",
+        "CWD_ORIGIN": "${CWD_ORIGIN:-http://localhost:5173}",
+        "CWD_LOGIN": "${CWD_LOGIN}",
+        "CWD_PASSWORD": "${CWD_PASSWORD}"
+      }
+    }
+  }
+}
