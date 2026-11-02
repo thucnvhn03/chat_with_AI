@@ -9,7 +9,7 @@ Skill này biến kết quả kiểm thử **đã có** thành báo cáo tổng 
 
 ## Ranh giới: chỉ đọc kết quả, không chạy kiểm thử
 
-Không tự chạy pytest, Vitest, Playwright, Docker hay bộ đánh giá. Máy phát triển của dự án từng bị reset khi chạy tải Docker nặng, và bộ đánh giá với Claude tốn phí. Nếu thiếu kết quả, đưa người dùng lệnh trong [references/result_sources.md](references/result_sources.md) để họ tự chạy, rồi lập báo cáo với phần còn thiếu được đánh dấu "Chưa có kết quả". Được phép chạy `node` cho script tổng hợp bên dưới vì nó chỉ đọc tệp.
+Không tự chạy pytest, Vitest, Playwright, Docker hay bộ đánh giá. Máy phát triển của dự án từng bị reset khi chạy tải Docker nặng, và bộ đánh giá với Claude tốn phí. Nếu thiếu kết quả, đề nghị dùng skill [test-run](../test-run/SKILL.md) (chạy tuần tự, an toàn cho máy ít RAM) hoặc đưa người dùng lệnh trong [references/result_sources.md](references/result_sources.md) để họ tự chạy, rồi lập báo cáo với phần còn thiếu được đánh dấu "Chưa có kết quả". Được phép chạy `node` cho script tổng hợp bên dưới vì nó chỉ đọc tệp.
 
 ## Quy trình
 
