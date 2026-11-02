@@ -1,1 +1,2 @@
 id,status,date,tester,note
+SEC-013,Đạt,2026-11-02,Claude Code (hỗ trợ QA),"Phần thủ công bước 3: git grep sk-ant-… trên mã đã theo dõi: 0 kết quả; deploy/.env bị .gitignore bỏ qua. Phần tự động (test_request_shape, test_out_of_scope…) đạt trong run-2026-11-02"
